@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>System Info</title>
+</head>
+<body>
 <?php
 /*
  * Adaptation of Linfo by Joseph Gillotti 2010-2015 <joe@u13.net>
@@ -68,3 +77,5 @@ foreach ($parser["RAM"] as $key => $value) {
 	echo "<br/>";
 }
 ?>
+</body>
+</html>
