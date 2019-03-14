@@ -77,5 +77,6 @@ foreach ($parser["RAM"] as $key => $value) {
 	echo "<br/>";
 }
 ?>
+<script src="main.js"></script>
 </body>
 </html>
