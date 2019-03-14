@@ -58,5 +58,13 @@ foreach ($parser["CPU"] as $key => $value) {
 // echo $parser["CPU"][0]["Vendor"];
 // echo("CPU: $anotherParser->getCPU()");
 // $linfo->output();
-
+echo("RAM:<br/>");
+foreach ($parser["RAM"] as $key => $value) {
+	if ($value == "Physical") {
+		echo $key . " " . $value;
+	} else {
+		echo $key . " " . $value . " B";
+	}
+	echo "<br/>";
+}
 ?>
