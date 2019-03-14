@@ -76,6 +76,15 @@ foreach ($parser["RAM"] as $key => $value) {
 	}
 	echo "<br/>";
 }
+var_dump($parser["Network Devices"]);
+echo("Network Devices:<br/>");
+foreach ($parser["Network Devices"] as $key => $value) {
+	echo "$key ";
+	foreach ($value as $key2 => $value2) {
+		echo $key2 . " " . $value2 . " ";
+	}	
+	echo "<br/>";
+}
 ?>
 <script src="main.js"></script>
 </body>
