@@ -26,7 +26,7 @@ $linfo = new Linfo;
 // Run through /proc or wherever and build our list of settings
 $linfo->scan();
 $anotherParser = $linfo->getParser();
-var_dump($anotherParser->getCpu());
+// var_dump($anotherParser->getCpu());
 // $cpu = $anotherParser->getCPU();
 // echo("Model: $cpu[0][Model]");
 $names = ["OS", "Kernel", "AccessedIP", "Distro", "RAM", "HD", "Mounts", "Load", "HostName", "UpTime", "CPU", "Model", "CPUArchitecutre", "Network Devices", "Devices", "Temps", "Battery", "Raid", "Wifi", "SoundCards", "processStats", "services", "numLoggedIn", "virtualization", "cpuUsage", "phpVersion", "webService", "contains"];
@@ -39,7 +39,23 @@ echo("Kernel: $parser[Kernel]<br/>");
 // echo("HD: $parser[HD]<br/>");
 // echo("Mounts: $parser[Mounts]<br/>");
 // echo("HostName: $parser[Hostname]<br/>");
-echo $parser["CPU"][0]["Model"];
+echo("CPU:<br/>");
+foreach ($parser["CPU"] as $key => $value) {
+	// echo $key . " " . $value;
+	echo "$key ";
+	foreach ($value as $key2 => $value2) {
+		if ($key2 == "usage_percentage") {
+			echo "Usage Percentage" . " " . $value2 . " ";
+		} else {
+		echo $key2 . " " . $value2 . " ";
+		}
+	}
+	echo "<br/>";
+	// echo $parser["CPU"][0]["Vendor"];	
+}
+// echo $parser["CPU"][0]["Model"];
+// echo "<br/>";
+// echo $parser["CPU"][0]["Vendor"];
 // echo("CPU: $anotherParser->getCPU()");
 // $linfo->output();
 
