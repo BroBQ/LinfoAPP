@@ -25,12 +25,22 @@ $linfo = new Linfo;
 
 // Run through /proc or wherever and build our list of settings
 $linfo->scan();
-
-
+$anotherParser = $linfo->getParser();
+var_dump($anotherParser->getCpu());
+// $cpu = $anotherParser->getCPU();
+// echo("Model: $cpu[0][Model]");
 $names = ["OS", "Kernel", "AccessedIP", "Distro", "RAM", "HD", "Mounts", "Load", "HostName", "UpTime", "CPU", "Model", "CPUArchitecutre", "Network Devices", "Devices", "Temps", "Battery", "Raid", "Wifi", "SoundCards", "processStats", "services", "numLoggedIn", "virtualization", "cpuUsage", "phpVersion", "webService", "contains"];
 $parser = $linfo->getInfo();
-print("OS: $parser[OS]\n");
-print("Kernel: $parser[Kernel]");
-$linfo->output();
+// $cpu = $linfo->getCPU();
+echo("OS: $parser[OS]<br/>");
+echo("Kernel: $parser[Kernel]<br/>");
+// echo("Distro: $parser[Distro]<br/>");
+// echo("RAM: $parser[RAM]<br/>");
+// echo("HD: $parser[HD]<br/>");
+// echo("Mounts: $parser[Mounts]<br/>");
+// echo("HostName: $parser[Hostname]<br/>");
+echo $parser["CPU"][0]["Model"];
+// echo("CPU: $anotherParser->getCPU()");
+// $linfo->output();
 
 ?>
