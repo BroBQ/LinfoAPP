@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>System Info</title>
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
 </head>
 <body>
 <?php
@@ -66,7 +68,7 @@ echo "</table>";
 // echo("CPU:<br/>");
 echo "<br/>";
 echo "<table>";
-echo "<tr><td>CPU:</td></tr>";
+echo "<tr><td colspan='2'>CPU:</td></tr>";
 foreach ($parser["CPU"] as $key => $value) {
 	// echo $key . " " . $value;
 	echo "<tr>";
@@ -92,7 +94,7 @@ echo "<br/>";
 // $linfo->output();
 // echo("RAM:<br/>");
 echo "<table>";
-echo "<tr><td>RAM:</td></tr>";
+echo "<tr><td colspan='2'>RAM:</td></tr>";
 foreach ($parser["RAM"] as $key => $value) {
 	if ($value == "Physical") {
 		echo "<tr><td>$key</td><td>$value</td></tr>";
