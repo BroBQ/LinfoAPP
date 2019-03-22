@@ -79,14 +79,6 @@ foreach ($parser["RAM"] as $key => $value) {
 // var_dump($parser["Network Devices"]);
 // echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 
-// echo("Network Devices:<br/>");
-// foreach ($parser["Network Devices"] as $key => $value) {
-// 	echo "$key ";
-// 	foreach ($value as $key2 => $value2) {
-// 		echo $key2 . " " . $value2 . " ";
-// 	}	
-// 	echo "<br/>";
-// }
 foreach ($parser["Network Devices"] as $key => $value) {
 	echo "<br/><br/>$key";
 	foreach ($value as $key2 => $value2) {
@@ -102,31 +94,6 @@ foreach ($parser["Network Devices"] as $key => $value) {
 		{
 			echo "<br/>" . $key2 . " " . $value2;
 		}
-		// switch ($key2) {
-		// 	case 'recieved':
-		// 		foreach ($value2 as $key3 => $value3) {
-		// 			echo $key3 . " " . $value3 . "<br/>";
-
-		// 		}
-		// 		break;
-		// 	case 'sent':
-		// 		# code...
-		// 		break;
-		// 	case 'state':
-		// 		echo $key2 . " " . $value2 . "<br/>";
-		// 		break;
-		// 	case 'type':
-		// 		echo $key2 . " " . $value2 . "<br/>";
-		// 		break;
-			
-		// 	default:
-		// 		# code...
-		// 		break;
-		// }
-	}
-	// for ($i=0; $i < count($value); $i++) { 
-	// 	# code...
-	// }
 }
 ?>
 <script src="main.js"></script>
