@@ -31,3 +31,8 @@ table tr:last-child td:last-child {
 td[colspan] {
 	background-color: cornflowerblue;
 }
+
+.parameter {
+	background-color: cornflowerblue;
+	/* font-weight: bold; */
+}
