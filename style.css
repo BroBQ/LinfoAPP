@@ -4,8 +4,9 @@ body {
 
 table {
 	border: 1px solid cornflowerblue;
-	border-collapse: collapse;
+	/* border-collapse: collapse; */
 	background-color: lightgray;
+	border-radius: 5px;
 }
 
 tr,
@@ -15,4 +16,9 @@ td {
 
 td:first-child {
 	font-weight: bold;
+	background-color: #c3c3c3;
+}
+
+td[colspan="2"] {
+	background-color: cornflowerblue;
 }
