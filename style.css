@@ -3,20 +3,28 @@ body {
 }
 
 table {
-	border: 1px solid cornflowerblue;
-	/* border-collapse: collapse; */
+	/* border: 1px solid cornflowerblue; */
+	border-collapse: collapse;
 	background-color: lightgray;
 	border-radius: 5px;
 }
 
-tr,
+/* tr,
 td {
 	border: 1px solid cornflowerblue;
-}
+} */
 
 td:first-child {
 	font-weight: bold;
 	background-color: #c3c3c3;
+}
+
+table tr:last-child td:first-child {
+	border-bottom-left-radius: 5px;
+}
+
+table tr:last-child td:last-child {
+	border-bottom-right-radius: 5px;
 }
 
 td[colspan="2"] {
