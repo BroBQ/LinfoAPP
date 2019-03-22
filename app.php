@@ -104,26 +104,34 @@ foreach ($parser["RAM"] as $key => $value) {
 	}
 }
 echo "</table>";
+echo "<br/>";
 // var_dump($parser["Network Devices"]);
 // echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
+echo "<table>";
+echo "<tr><td colspan='9'>RAM:</td></tr>";
 
 foreach ($parser["Network Devices"] as $key => $value) {
-	echo "<br/><br/>$key";
+	echo "<tr>";
+	echo "<td>$key</td>";
 	foreach ($value as $key2 => $value2) {
 		// echo $value2;
 		if($key2=="recieved" || $key2=="sent")
 		{
-			echo "<br/>$key2<br/>";
+			echo "<td>$key2</td>";
+			echo "<td>";
 			foreach ($value2 as $key3 => $value3) {
-				echo $key3 . " " . $value3 . " ";
+				echo "$key3 $value3 ";
 			}
+			echo "</td>";
 		}
 		else
 		{
-			echo "<br/>" . $key2 . " " . $value2;
+			echo "<td>$key2</td><td>$value2</td>";
 		}
 	}
+	echo "</tr>";
 }
+echo "</table>";
 ?>
 <script src="main.js"></script>
 </body>
