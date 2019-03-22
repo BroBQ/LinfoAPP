@@ -65,7 +65,7 @@ echo "</table>";
 // echo("CPU:<br/>");
 echo "<br/>";
 echo "<table>";
-echo "<tr>CPU:</tr>";//to do check
+echo "<tr><td>CPU:</td></tr>";
 foreach ($parser["CPU"] as $key => $value) {
 	// echo $key . " " . $value;
 	echo "<tr>";
