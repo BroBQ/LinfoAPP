@@ -76,14 +76,57 @@ foreach ($parser["RAM"] as $key => $value) {
 	}
 	echo "<br/>";
 }
-var_dump($parser["Network Devices"]);
-echo("Network Devices:<br/>");
+// var_dump($parser["Network Devices"]);
+echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
+
+echo "<br/>";
+// echo("Network Devices:<br/>");
+// foreach ($parser["Network Devices"] as $key => $value) {
+// 	echo "$key ";
+// 	foreach ($value as $key2 => $value2) {
+// 		echo $key2 . " " . $value2 . " ";
+// 	}	
+// 	echo "<br/>";
+// }
 foreach ($parser["Network Devices"] as $key => $value) {
-	echo "$key ";
+	echo "$key <br/>";
 	foreach ($value as $key2 => $value2) {
-		echo $key2 . " " . $value2 . " ";
-	}	
-	echo "<br/>";
+		// echo $value2;
+		if($key2=="recieved" || $key2=="sent")
+		{
+			foreach ($value2 as $key3 => $value3) {
+				echo $key3 . " " . $value3 . "<br/>";
+			}
+		}
+		else
+		{
+			echo $key2 . " " . $value2 . "<br/>";
+		}
+		// switch ($key2) {
+		// 	case 'recieved':
+		// 		foreach ($value2 as $key3 => $value3) {
+		// 			echo $key3 . " " . $value3 . "<br/>";
+
+		// 		}
+		// 		break;
+		// 	case 'sent':
+		// 		# code...
+		// 		break;
+		// 	case 'state':
+		// 		echo $key2 . " " . $value2 . "<br/>";
+		// 		break;
+		// 	case 'type':
+		// 		echo $key2 . " " . $value2 . "<br/>";
+		// 		break;
+			
+		// 	default:
+		// 		# code...
+		// 		break;
+		// }
+	}
+	// for ($i=0; $i < count($value); $i++) { 
+	// 	# code...
+	// }
 }
 ?>
 <script src="main.js"></script>
