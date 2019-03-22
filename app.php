@@ -83,20 +83,23 @@ foreach ($parser["CPU"] as $key => $value) {
 	// echo $parser["CPU"][0]["Vendor"];	
 }
 echo "</table>";
+echo "<br/>";
 // echo $parser["CPU"][0]["Model"];
 // echo "<br/>";
 // echo $parser["CPU"][0]["Vendor"];
 // echo("CPU: $anotherParser->getCPU()");
 // $linfo->output();
-echo("RAM:<br/>");
+// echo("RAM:<br/>");
+echo "<table>";
+echo "<tr><td>RAM:</td></tr>";
 foreach ($parser["RAM"] as $key => $value) {
 	if ($value == "Physical") {
-		echo $key . " " . $value;
+		echo "<tr><td>$key</td><td>$value</td></tr>";
 	} else {
-		echo $key . " " . $value . " B";
+		echo "<tr><td>$key</td><td>$value B</td></tr>";
 	}
-	echo "<br/>";
 }
+echo "</table>";
 // var_dump($parser["Network Devices"]);
 // echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 
