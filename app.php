@@ -77,9 +77,8 @@ foreach ($parser["RAM"] as $key => $value) {
 	echo "<br/>";
 }
 // var_dump($parser["Network Devices"]);
-echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
+// echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 
-echo "<br/>";
 // echo("Network Devices:<br/>");
 // foreach ($parser["Network Devices"] as $key => $value) {
 // 	echo "$key ";
@@ -89,18 +88,19 @@ echo "<br/>";
 // 	echo "<br/>";
 // }
 foreach ($parser["Network Devices"] as $key => $value) {
-	echo "$key <br/>";
+	echo "<br/><br/>$key";
 	foreach ($value as $key2 => $value2) {
 		// echo $value2;
 		if($key2=="recieved" || $key2=="sent")
 		{
+			echo "<br/>$key2<br/>";
 			foreach ($value2 as $key3 => $value3) {
-				echo $key3 . " " . $value3 . "<br/>";
+				echo $key3 . " " . $value3 . " ";
 			}
 		}
 		else
 		{
-			echo $key2 . " " . $value2 . "<br/>";
+			echo "<br/>" . $key2 . " " . $value2;
 		}
 		// switch ($key2) {
 		// 	case 'recieved':
