@@ -62,10 +62,15 @@ echo "</table>";
 // echo("HD: $parser[HD]<br/>");
 // echo("Mounts: $parser[Mounts]<br/>");
 // echo("HostName: $parser[Hostname]<br/>");
-echo("CPU:<br/>");
+// echo("CPU:<br/>");
+echo "<br/>";
+echo "<table>";
+echo "<tr>CPU:</tr>";//to do check
 foreach ($parser["CPU"] as $key => $value) {
 	// echo $key . " " . $value;
-	echo "$key ";
+	echo "<tr>";
+	echo "<td>Core $key</td>";
+	echo "<td>";
 	foreach ($value as $key2 => $value2) {
 		if ($key2 == "usage_percentage") {
 			echo "Usage Percentage" . " " . $value2 . " ";
@@ -73,9 +78,11 @@ foreach ($parser["CPU"] as $key => $value) {
 		echo $key2 . " " . $value2 . " ";
 		}
 	}
-	echo "<br/>";
+	echo "</td>";
+	echo "</tr>";
 	// echo $parser["CPU"][0]["Vendor"];	
 }
+echo "</table>";
 // echo $parser["CPU"][0]["Model"];
 // echo "<br/>";
 // echo $parser["CPU"][0]["Vendor"];
