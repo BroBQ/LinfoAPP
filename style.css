@@ -1,0 +1,10 @@
+table {
+	border: 1px solid cornflowerblue;
+	border-collapse: collapse;
+	background-color: lightgray;
+}
+
+tr,
+td {
+	border: 1px solid cornflowerblue;
+}
