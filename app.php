@@ -94,6 +94,7 @@ foreach ($parser["Network Devices"] as $key => $value) {
 		{
 			echo "<br/>" . $key2 . " " . $value2;
 		}
+	}
 }
 ?>
 <script src="main.js"></script>
