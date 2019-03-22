@@ -28,6 +28,6 @@ table tr:last-child td:last-child {
 	border-bottom-right-radius: 5px;
 }
 
-td[colspan="2"] {
+td[colspan] {
 	background-color: cornflowerblue;
 }
