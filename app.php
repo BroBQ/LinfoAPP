@@ -108,7 +108,7 @@ echo "<br/>";
 // var_dump($parser["Network Devices"]);
 // echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 echo "<table>";
-echo "<tr><td colspan='9'>RAM:</td></tr>";
+echo "<tr><td colspan='9'>Network Devices:</td></tr>";
 
 foreach ($parser["Network Devices"] as $key => $value) {
 	echo "<tr>";
