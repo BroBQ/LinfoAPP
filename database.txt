@@ -1,0 +1,12 @@
+System:
+Hostname; Load; Processes; Threads; Uptime;
+Cpu:
+Model; AVGMHz; AVGUsage;
+RAM:
+Total; Free;
+Network Devices:
+(osobny rekord dla każdej karty, lecz jedna tabela)
+Name; ReceivedBytes; SentBytes; State; Type;
+Drives:
+(osobny rekord dla każdego dysku, lecz jedna tabela)
+Identificator; Name; Vendor; Device; Size;
