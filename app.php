@@ -50,6 +50,7 @@ echo "<tr>";
 echo "<td>OS:</td>";
 echo "<td>$parser[OS]</td>";
 echo "</tr>";
+// echo "<tr><td>Distribution:</td><td>$parser[Distro]</td></tr>";
 echo "<tr>";
 echo "<td>Kernel:</td>";
 echo "<td>$parser[Kernel]</td>";
