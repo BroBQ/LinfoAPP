@@ -45,7 +45,7 @@ $names = ["OS", "Kernel", "AccessedIP", "Distro", "RAM", "HD", "Mounts", "Load",
 $parser = $linfo->getInfo();
 // $cpu = $linfo->getCPU();
 echo "<table>";
-echo "<tr><td colspan='2'>SYSTEM:</td></tr>";
+echo "<tr><td class='parameter' colspan='2'>SYSTEM:</td></tr>";
 echo "<tr>";
 echo "<td>OS:</td>";
 echo "<td>$parser[OS]</td>";
