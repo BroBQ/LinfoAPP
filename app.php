@@ -126,6 +126,23 @@ foreach ($parser["HD"] as $key => $value) {
 	echo "</tr>";
 }
 echo "</table>";
+// echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
+echo "<br/>";
+
+echo "<table>";
+echo "<tr><td class='parameter' colspan='7'>Mounted Drives</td></tr>";
+echo "<tr><td>Type</td><td>Mount Point</td><td>Label</td><td>Filesystem</td><td>Size</td><td>Used</td><td>Free</td></tr>";
+foreach ($parser["Mounts"] as $key => $value) {
+	echo "<tr>";
+	echo "<tr><td>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . "</td><td>" . $value["size"] . "</td><td>" . $value["used"] . "</td><td>" . $value["free"] . "</td></tr>";
+
+	// foreach ($value as $key2 => $value2) {
+		// echo "<td>$key2</td><td>$value2</td>";
+		// echo "<tr><td>" . $key2["devtype"] . "</td><td>" . $value2["mount"] . "</td><td>" . $value2["label"] . "</td><td>" . $key2["type"] . "</td><td>" . $value2["size"] . "</td><td>" . $value2["used"] . "</td><td>" . $key2["free"] . "</td></tr>";
+	// }
+	echo "</tr>";
+}
+echo "</table>";
 ?>
 <script src="main.js"></script>
 </body>
