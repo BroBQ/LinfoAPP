@@ -132,6 +132,40 @@ foreach ($parser["Network Devices"] as $key => $value) {
 	echo "</tr>";
 }
 echo "</table>";
+
+// echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
+echo "<br/>";
+
+echo "<table>";
+echo "<tr><td colspan='9'>Drives:</td></tr>";
+foreach ($parser["HD"] as $key => $value) {
+	echo "<tr>";
+	echo "<td>Drive $key</td>";
+	foreach ($value as $key2 => $value2) {
+		if($key2 == 'partitions') {
+			echo "<tr>";
+			foreach ($value2 as $key3 => $value3) {
+				// echo "<td>$key3</td>";
+				echo "<tr>";
+				echo "<td>Partition $key3</td>";
+				echo "<td>$value3[size] B</td>";
+				// foreach ($value3 as $key4 => $value4) {
+				// 	// echo "<td>$key4</td><td>$value4</td>";
+				// 	echo "<td>$value4 - $key4 B</td>";					
+				// }
+				echo "</tr>";
+			}
+			echo "</tr>";
+		} else if($key2 == 'reads' || $key2 == 'writes') {
+		} else {
+			echo "<td class='parameter'>$key2</td>";
+			echo "<td>$value2</td>";
+		}
+		
+	}
+	echo "</tr>";
+}
+echo "</table>";
 ?>
 <script src="main.js"></script>
 </body>
