@@ -1,12 +1,12 @@
 System:
-Hostname; Load; Processes; Threads; Uptime;
+Hostname; Load; Processes; Threads; Uptime; Date;
 Cpu:
-Model; AVGMHz; AVGUsage;
+Model; AVGMHz; AVGUsage; Date;
 RAM:
-Total; Free;
+Total; Free; Date;
 Network Devices:
 (osobny rekord dla każdej karty, lecz jedna tabela)
-Name; ReceivedBytes; SentBytes; State; Type;
+Name; ReceivedBytes; SentBytes; State; Type; Date;
 Drives:
 (osobny rekord dla każdego dysku, lecz jedna tabela)
-Identificator; Name; Vendor; Device; Size;
+Identificator; Name; Vendor; Device; Size; Date;
