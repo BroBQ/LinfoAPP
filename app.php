@@ -25,6 +25,7 @@ $anotherParser = $linfo->getParser();
 $names = ["OS", "Kernel", "AccessedIP", "Distro", "RAM", "HD", "Mounts", "Load", "HostName", "UpTime", "CPU", "Model", "CPUArchitecutre", "Network Devices", "Devices", "Temps", "Battery", "Raid", "Wifi", "SoundCards", "processStats", "services", "numLoggedIn", "virtualization", "cpuUsage", "phpVersion", "webService", "contains"];
 $parser = $linfo->getInfo();
 
+// Table for system specs
 echo "<table>";
 echo "<tr><td class='parameter' colspan='2'>SYSTEM:</td></tr>";
 echo "<tr><td>OS:</td><td>$parser[OS]</td></tr>";
@@ -38,11 +39,12 @@ echo "<tr><td>Load:</td><td>$parser[Load]</td></tr>";
 echo "<tr><td>CPU Usage:</td><td>" . $parser["cpuUsage"] . "</td></tr>";
 echo "<tr><td>Uptime:</td><td>" . $parser["UpTime"]["text"] . "</td></tr>";
 echo "<tr><td>Booted:</td><td>" . date('d/m/Y H:i:s', $parser["UpTime"]["bootedTimestamp"]) . "</td></tr>";
-
 echo "</table>";
 // echo '<pre>' . var_export($parser["UpTime"], true) . '</pre>';
 
 echo "<br/>";
+
+// Table for CPU
 echo "<table>";
 echo "<tr><td class='parameter' colspan='2'>CPU:</td></tr>";
 foreach ($parser["CPU"] as $key => $value) {
@@ -61,7 +63,10 @@ foreach ($parser["CPU"] as $key => $value) {
 	echo "</tr>";
 }
 echo "</table>";
+
 echo "<br/>";
+
+// Table for RAM
 echo "<table>";
 echo "<tr><td class='parameter' colspan='2'>RAM:</td></tr>";
 foreach ($parser["RAM"] as $key => $value) {
@@ -72,15 +77,16 @@ foreach ($parser["RAM"] as $key => $value) {
 	}
 }
 echo "</table>";
+
 echo "<br/>";
+
+// Table for Network Devices
 echo "<table>";
 echo "<tr><td class='parameter' colspan='9'>Network Devices:</td></tr>";
-
 foreach ($parser["Network Devices"] as $key => $value) {
 	echo "<tr>";
 	echo "<td>$key</td>";
 	foreach ($value as $key2 => $value2) {
-		// echo $value2;
 		if($key2=="recieved" || $key2=="sent")
 		{
 			echo "<td class='parameter'>$key2</td>";
@@ -101,6 +107,7 @@ echo "</table>";
 
 echo "<br/>";
 
+// Table for Hard Disks
 echo "<table>";
 echo "<tr><td class='parameter' colspan='9'>Drives:</td></tr>";
 foreach ($parser["HD"] as $key => $value) {
@@ -120,8 +127,7 @@ foreach ($parser["HD"] as $key => $value) {
 		} else {
 			echo "<td class='parameter'>$key2</td>";
 			echo "<td>$value2</td>";
-		}
-		
+		}		
 	}
 	echo "</tr>";
 }
@@ -129,6 +135,7 @@ echo "</table>";
 // echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
 echo "<br/>";
 
+// Table for Mounted Drives
 echo "<table>";
 echo "<tr><td class='parameter' colspan='7'>Mounted Drives</td></tr>";
 echo "<tr id='devtypestyle'><td>Type</td><td>Mount Point</td><td>Label</td><td>Filesystem</td><td>Size</td><td>Used</td><td>Free</td></tr>";
