@@ -4,29 +4,29 @@ body {
 }
 
 table {
-	/* border: 1px solid cornflowerblue; */
+	border: 1px solid cornflowerblue;
 	border-collapse: collapse;
 	background-color: #E8E8E8;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 }
 
-/* tr,
+tr,
 td {
 	border: 1px solid cornflowerblue;
-} */
+}
 
 td:first-child {
 	font-weight: bold;
 	background-color: gainsboro;
 }
 
-table tr:last-child td:first-child {
+/* table tr:last-child td:first-child {
 	border-bottom-left-radius: 5px;
-}
+} */
 
-table tr:last-child td:last-child {
+/* table tr:last-child td:last-child {
 	border-bottom-right-radius: 5px;
-}
+} */
 
 /* td[colspan] {
 	background-color: cornflowerblue;
