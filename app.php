@@ -49,6 +49,7 @@ foreach ($parser["processStats"] as $key => $value) {
 		echo "<tr><td>Threads:</td><td>$value</td></tr>";
 	}
 }
+echo "<tr><td>Load:</td><td>$parser[Load]</td></tr>";
 echo "<tr><td>Uptime:</td><td>" . $parser["UpTime"]["text"] . "</td></tr>";
 echo "<tr><td>Booted:</td><td>" . date('d/m/Y H:i:s', $parser["UpTime"]["bootedTimestamp"]) . "</td></tr>";
 
