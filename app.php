@@ -27,19 +27,10 @@ $parser = $linfo->getInfo();
 
 echo "<table>";
 echo "<tr><td class='parameter' colspan='2'>SYSTEM:</td></tr>";
-echo "<tr>";
-echo "<td>OS:</td>";
-echo "<td>$parser[OS]</td>";
-echo "</tr>";
+echo "<tr><td>OS:</td><td>$parser[OS]</td></tr>";
 // echo "<tr><td>Distribution:</td><td>$parser[Distro]</td></tr>";
-echo "<tr>";
-echo "<td>Kernel:</td>";
-echo "<td>$parser[Kernel]</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>Hostname:</td>";
-echo "<td>$parser[HostName]</td>";
-echo "</tr>";
+echo "<tr><td>Kernel:</td><td>$parser[Kernel]</td></tr>";
+echo "<tr><td>Hostname:</td><td>$parser[HostName]</td></tr>";
 echo "<tr><td>Architecture:</td><td>$parser[CPUArchitecture]</td></tr>";
 foreach ($parser["processStats"] as $key => $value) {
 	if($key == 'proc_total') {
