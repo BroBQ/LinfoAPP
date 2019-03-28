@@ -67,8 +67,11 @@ foreach ($parser["processStats"] as $key => $value) {
 		echo "<tr><td>Threads:</td><td>$value</td></tr>";
 	}
 }
+echo "<tr><td>Uptime:</td><td>" . $parser["UpTime"]["text"] . "</td></tr>";
+echo "<tr><td>Booted:</td><td>" . date('d/m/Y H:i:s', $parser["UpTime"]["bootedTimestamp"]) . "</td></tr>";
+
 echo "</table>";
-// echo '<pre>' . var_export($parser["processStats"], true) . '</pre>';
+// echo '<pre>' . var_export($parser["UpTime"], true) . '</pre>';
 
 // echo("OS: $parser[OS]<br/>");
 // echo("Kernel: $parser[Kernel]<br/>");
