@@ -40,3 +40,13 @@ td:first-child {
 	background-color: cornflowerblue !important;
 	/* font-weight: bold; */
 }
+
+#devtype {
+	background-color: #E8E8E8;
+	font-weight: normal;
+}
+
+#devtypestyle {
+	background-color: gainsboro;
+	font-weight: bold;
+}

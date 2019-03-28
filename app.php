@@ -131,10 +131,10 @@ echo "<br/>";
 
 echo "<table>";
 echo "<tr><td class='parameter' colspan='7'>Mounted Drives</td></tr>";
-echo "<tr><td>Type</td><td>Mount Point</td><td>Label</td><td>Filesystem</td><td>Size</td><td>Used</td><td>Free</td></tr>";
+echo "<tr id='devtypestyle'><td>Type</td><td>Mount Point</td><td>Label</td><td>Filesystem</td><td>Size</td><td>Used</td><td>Free</td></tr>";
 foreach ($parser["Mounts"] as $key => $value) {
 	echo "<tr>";
-	echo "<tr><td>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . "</td><td>" . $value["size"] . "</td><td>" . $value["used"] . "</td><td>" . $value["free"] . "</td></tr>";
+	echo "<tr><td id='devtype'>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . "</td><td>" . $value["size"] . "</td><td>" . $value["used"] . "</td><td>" . $value["free"] . "</td></tr>";
 	echo "</tr>";
 }
 echo "</table>";
