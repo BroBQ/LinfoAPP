@@ -32,14 +32,16 @@ echo "<tr><td>OS:</td><td>$parser[OS]</td></tr>";
 echo "<tr><td>Kernel:</td><td>$parser[Kernel]</td></tr>";
 echo "<tr><td>Hostname:</td><td>$parser[HostName]</td></tr>";
 echo "<tr><td>Architecture:</td><td>$parser[CPUArchitecture]</td></tr>";
-foreach ($parser["processStats"] as $key => $value) {
-	if($key == 'proc_total') {
-		echo "<tr><td>Porcesses:</td><td>$value</td></tr>";
-	}
-	if($key == 'threads') {
-		echo "<tr><td>Threads:</td><td>$value</td></tr>";
-	}
-}
+echo "<tr><td>Porcesses:</td><td>" . $parser["processStats"]["proc_total"] . "</td></tr>";
+echo "<tr><td>Porcesses:</td><td>" . $parser["processStats"]["threads"] . "</td></tr>";
+// foreach ( as $key => $value) {
+// 	if($key == 'proc_total') {
+		
+// 	}
+// 	if($key == 'threads') {
+// 		echo "<tr><td>Threads:</td><td>$value</td></tr>";
+// 	}
+// }
 echo "<tr><td>Load:</td><td>$parser[Load]</td></tr>";
 echo "<tr><td>Uptime:</td><td>" . $parser["UpTime"]["text"] . "</td></tr>";
 echo "<tr><td>Booted:</td><td>" . date('d/m/Y H:i:s', $parser["UpTime"]["bootedTimestamp"]) . "</td></tr>";
