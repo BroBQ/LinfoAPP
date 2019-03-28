@@ -28,11 +28,15 @@ table tr:last-child td:last-child {
 	border-bottom-right-radius: 5px;
 }
 
-td[colspan] {
+/* td[colspan] {
 	background-color: cornflowerblue;
-}
+} */
+
+/* table tr:first-child {
+	background-color: cornflowerblue;
+} */
 
 .parameter {
-	background-color: cornflowerblue;
+	background-color: cornflowerblue !important;
 	/* font-weight: bold; */
 }

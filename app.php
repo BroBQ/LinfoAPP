@@ -69,7 +69,7 @@ echo "</table>";
 // echo("CPU:<br/>");
 echo "<br/>";
 echo "<table>";
-echo "<tr><td colspan='2'>CPU:</td></tr>";
+echo "<tr><td class='parameter' colspan='2'>CPU:</td></tr>";
 foreach ($parser["CPU"] as $key => $value) {
 	// echo $key . " " . $value;
 	echo "<tr>";
@@ -95,7 +95,7 @@ echo "<br/>";
 // $linfo->output();
 // echo("RAM:<br/>");
 echo "<table>";
-echo "<tr><td colspan='2'>RAM:</td></tr>";
+echo "<tr><td class='parameter' colspan='2'>RAM:</td></tr>";
 foreach ($parser["RAM"] as $key => $value) {
 	if ($value == "Physical") {
 		echo "<tr><td>$key</td><td>$value</td></tr>";
@@ -108,7 +108,7 @@ echo "<br/>";
 // var_dump($parser["Network Devices"]);
 // echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 echo "<table>";
-echo "<tr><td colspan='9'>Network Devices:</td></tr>";
+echo "<tr><td class='parameter' colspan='9'>Network Devices:</td></tr>";
 
 foreach ($parser["Network Devices"] as $key => $value) {
 	echo "<tr>";
@@ -137,7 +137,7 @@ echo "</table>";
 echo "<br/>";
 
 echo "<table>";
-echo "<tr><td colspan='9'>Drives:</td></tr>";
+echo "<tr><td class='parameter' colspan='9'>Drives:</td></tr>";
 foreach ($parser["HD"] as $key => $value) {
 	echo "<tr>";
 	echo "<td>Drive $key</td>";
@@ -148,7 +148,7 @@ foreach ($parser["HD"] as $key => $value) {
 				// echo "<td>$key3</td>";
 				echo "<tr>";
 				echo "<td>Partition $key3</td>";
-				echo "<td>$value3[size] B</td>";
+				echo "<td colspan='8'>$value3[size] B</td>";
 				// foreach ($value3 as $key4 => $value4) {
 				// 	// echo "<td>$key4</td><td>$value4</td>";
 				// 	echo "<td>$value4 - $key4 B</td>";					
