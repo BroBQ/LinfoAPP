@@ -58,7 +58,18 @@ echo "<tr>";
 echo "<td>Hostname:</td>";
 echo "<td>$parser[HostName]</td>";
 echo "</tr>";
+echo "<tr><td>Architecture:</td><td>$parser[CPUArchitecture]</td></tr>";
+foreach ($parser["processStats"] as $key => $value) {
+	if($key == 'proc_total') {
+		echo "<tr><td>Porcesses:</td><td>$value</td></tr>";
+	}
+	if($key == 'threads') {
+		echo "<tr><td>Threads:</td><td>$value</td></tr>";
+	}
+}
 echo "</table>";
+// echo '<pre>' . var_export($parser["processStats"], true) . '</pre>';
+
 // echo("OS: $parser[OS]<br/>");
 // echo("Kernel: $parser[Kernel]<br/>");
 // echo("Distro: $parser[Distro]<br/>");
