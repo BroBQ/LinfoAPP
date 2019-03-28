@@ -11,23 +11,6 @@
 </head>
 <body>
 <?php
-/*
- * Adaptation of Linfo by Joseph Gillotti 2010-2015 <joe@u13.net>
- *
- *
- * Linfo is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * Linfo is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with Linfo. If not, see <http://www.gnu.org/licenses/>.
-*/
 
 // Load libs
 require_once dirname(__FILE__).'/init.php';
@@ -38,12 +21,10 @@ $linfo = new Linfo;
 // Run through /proc or wherever and build our list of settings
 $linfo->scan();
 $anotherParser = $linfo->getParser();
-// var_dump($anotherParser->getCpu());
-// $cpu = $anotherParser->getCPU();
-// echo("Model: $cpu[0][Model]");
+
 $names = ["OS", "Kernel", "AccessedIP", "Distro", "RAM", "HD", "Mounts", "Load", "HostName", "UpTime", "CPU", "Model", "CPUArchitecutre", "Network Devices", "Devices", "Temps", "Battery", "Raid", "Wifi", "SoundCards", "processStats", "services", "numLoggedIn", "virtualization", "cpuUsage", "phpVersion", "webService", "contains"];
 $parser = $linfo->getInfo();
-// $cpu = $linfo->getCPU();
+
 echo "<table>";
 echo "<tr><td class='parameter' colspan='2'>SYSTEM:</td></tr>";
 echo "<tr>";
@@ -74,14 +55,6 @@ echo "<tr><td>Booted:</td><td>" . date('d/m/Y H:i:s', $parser["UpTime"]["bootedT
 echo "</table>";
 // echo '<pre>' . var_export($parser["UpTime"], true) . '</pre>';
 
-// echo("OS: $parser[OS]<br/>");
-// echo("Kernel: $parser[Kernel]<br/>");
-// echo("Distro: $parser[Distro]<br/>");
-// echo("RAM: $parser[RAM]<br/>");
-// echo("HD: $parser[HD]<br/>");
-// echo("Mounts: $parser[Mounts]<br/>");
-// echo("HostName: $parser[Hostname]<br/>");
-// echo("CPU:<br/>");
 echo "<br/>";
 echo "<table>";
 echo "<tr><td class='parameter' colspan='2'>CPU:</td></tr>";
@@ -99,16 +72,9 @@ foreach ($parser["CPU"] as $key => $value) {
 	}
 	echo "</td>";
 	echo "</tr>";
-	// echo $parser["CPU"][0]["Vendor"];	
 }
 echo "</table>";
 echo "<br/>";
-// echo $parser["CPU"][0]["Model"];
-// echo "<br/>";
-// echo $parser["CPU"][0]["Vendor"];
-// echo("CPU: $anotherParser->getCPU()");
-// $linfo->output();
-// echo("RAM:<br/>");
 echo "<table>";
 echo "<tr><td class='parameter' colspan='2'>RAM:</td></tr>";
 foreach ($parser["RAM"] as $key => $value) {
@@ -120,8 +86,6 @@ foreach ($parser["RAM"] as $key => $value) {
 }
 echo "</table>";
 echo "<br/>";
-// var_dump($parser["Network Devices"]);
-// echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 echo "<table>";
 echo "<tr><td class='parameter' colspan='9'>Network Devices:</td></tr>";
 
@@ -148,7 +112,6 @@ foreach ($parser["Network Devices"] as $key => $value) {
 }
 echo "</table>";
 
-// echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
 echo "<br/>";
 
 echo "<table>";
@@ -160,14 +123,9 @@ foreach ($parser["HD"] as $key => $value) {
 		if($key2 == 'partitions') {
 			echo "<tr>";
 			foreach ($value2 as $key3 => $value3) {
-				// echo "<td>$key3</td>";
 				echo "<tr>";
 				echo "<td>Partition $key3</td>";
 				echo "<td colspan='8'>$value3[size] B</td>";
-				// foreach ($value3 as $key4 => $value4) {
-				// 	// echo "<td>$key4</td><td>$value4</td>";
-				// 	echo "<td>$value4 - $key4 B</td>";					
-				// }
 				echo "</tr>";
 			}
 			echo "</tr>";
