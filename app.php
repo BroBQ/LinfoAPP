@@ -143,5 +143,6 @@ foreach ($parser["Mounts"] as $key => $value) {
 echo "</table>";
 ?>
 <script src="main.js"></script>
+<script src="bubbles.js"></script>
 </body>
 </html>
