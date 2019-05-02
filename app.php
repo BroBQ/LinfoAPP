@@ -184,8 +184,8 @@ echo "</table>";
 // }
 
 // $databaseConnection->close();
-echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
-echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
+// echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
+// echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
 // echo $parser["CPU"][0]["Model"];
 // echo '</br>';
 
