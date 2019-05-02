@@ -151,8 +151,10 @@ foreach ($parser["Mounts"] as $key => $value) {
 }
 echo "</table>";
 
-
-
+connect();
+createSQL($parser);
+send();
+closeConnection();
 
 if ($emergency == true) {
 	echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
