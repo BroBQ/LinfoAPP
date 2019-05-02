@@ -23,6 +23,7 @@ $avgMHz = $MHzSum / count($parser["CPU"]);
 $avgUsage = $usageSum / count($parser["CPU"]);
 $sqlCPU = 'INSERT INTO `cpuinfo` (`Model`, `MHz`, `UsagePercentage`, `CPUDate`) VALUES ("' . $parser["CPU"][0]["Model"] . '","' . $avgMHz . '","' . $avgUsage . '", NOW())';
 
+$sqlRAM = "INSERT INTO `ram` (`Total`, `Free`, `RAMDate`) VALUES (" . $parser["RAM"]["total"] . "," . $parser["RAM"]["free"] . ", NOW())";
 
 
 
