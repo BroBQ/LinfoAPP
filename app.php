@@ -102,6 +102,8 @@ foreach ($parser["RAM"] as $key => $value) {
 }
 echo "</table>";
 
+$sqlRAM = "INSERT INTO `ram` (`Total`, `Free`, `RAMDate`) VALUES (" . $parser["RAM"]["total"] . "," . $parser["RAM"]["free"] . ", NOW())";
+
 echo "<br/>";
 
 // Table for Network Devices
@@ -174,7 +176,7 @@ echo "</table>";
 // }
 
 // $databaseConnection->close();
-// echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
+echo '<pre>' . var_export($parser["RAM"], true) . '</pre>';
 // echo $parser["CPU"][0]["Model"];
 // echo '</br>';
 
