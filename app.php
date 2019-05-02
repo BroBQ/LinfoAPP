@@ -86,7 +86,7 @@ for ($i=0; $i < count($parser["CPU"]); $i++) {
 }
 $avgMHz = $MHzSum / count($parser["CPU"]);
 $avgUsage = $usageSum / count($parser["CPU"]);
-$sqlCPU = "INSERT INTO `cpuinfo` (`Model`, `MHz`, `UsagePercentage`, `CPUDate`) VALUES (" . $parser["CPU"][0]["Model"] . "," . $avgMHz . "," . $avgUsage . ", NOW())";
+$sqlCPU = 'INSERT INTO `cpuinfo` (`Model`, `MHz`, `UsagePercentage`, `CPUDate`) VALUES ("' . $parser["CPU"][0]["Model"] . '","' . $avgMHz . '","' . $avgUsage . '", NOW())';
 
 echo "<br/>";
 
@@ -177,7 +177,7 @@ foreach ($parser["Mounts"] as $key => $value) {
 echo "</table>";
 
 // $databaseConnection->query($sqlSystem);
-if ($databaseConnection->query($sqlSystem) === TRUE) {
+if ($databaseConnection->query($sqlCPU) === TRUE) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sqlSystem . "<br>" . $databaseConnection->error;
