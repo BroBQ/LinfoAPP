@@ -54,7 +54,7 @@ echo "</table>";
 // echo '<pre>' . var_export($parser["UpTime"], true) . '</pre>';
 
 //creating sql for system table
-$sqlSystem = "INSERT INTO `system` (`Hostname`, `Processes`, `Threads`, `SystemLoad`, `Uptime`, `SystemDate`) VALUES (" . $parser['HostName'] . "," . $parser['processStats']['proc_total'] . "," . $parser['processStats']['threads'] . "," . $parser['Load'] . "," . $parser['UpTime']['text'] . ", NOW())";
+$sqlSystem = "INSERT INTO `system` (`Hostname`, `Processes`, `Threads`, `SystemLoad`, `Uptime`, `SystemDate`) VALUES (" . $parser['HostName'] . "," . $parser['processStats']['proc_total'] . "," . $parser['processStats']['threads'] . "," . $parser['Load'] . ",'" . $parser['UpTime']['text'] . "', NOW())";
 
 echo "<br/>";
 
@@ -133,7 +133,7 @@ echo "</table>";
 
 $netDevicesDataSQL = array();
 foreach ($parser["Network Devices"] as $key => $value) {
-	$a = array($key, $value["recived"]["bytes"], $value["sent"]["bytes"], $value["state"], $value["type"]);
+	$a = array($key, $value["recieved"]["bytes"], $value["sent"]["bytes"], $value["state"], $value["type"]);
 	$netSQL = "INSERT INTO `networkdevices` (`Name`, `ReceivedBytes`, `SentBytes`, `Status`, `DeviceType`, `NetworkDate`) VALUES (" . $a[0] . "," . $a[1] . "," . $a[2] . ",". $a[3] . "," . $a[4] . ", NOW())";
 
 	array_push($netDevicesDataSQL, $netSQL);
@@ -177,14 +177,14 @@ foreach ($parser["Mounts"] as $key => $value) {
 echo "</table>";
 
 // $databaseConnection->query($sqlSystem);
-// if ($databaseConnection->query($sql) === TRUE) {
-//     echo "New record created successfully";
-// } else {
-//     echo "Error: " . $sql . "<br>" . $databaseConnection->error;
-// }
+if ($databaseConnection->query($sqlSystem) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sqlSystem . "<br>" . $databaseConnection->error;
+}
 
 // $databaseConnection->close();
-// echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
+echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 // echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
 // echo $parser["CPU"][0]["Model"];
 // echo '</br>';
@@ -199,6 +199,14 @@ echo "</table>";
 // $avgUsage = $usageSum / count($parser["CPU"]);
 // echo $avgMHz;
 // echo $avgUsage;
+
+$databaseConnection->query($sqlSystem);
+$databaseConnection->query($sqlCPU);
+$databaseConnection->query($sqlRAM);
+foreach ($netDevicesDataSQL as $key => $value) {
+	$databaseConnection->query($key);
+}
+
 
 ?>
 <script src="main.js"></script>
