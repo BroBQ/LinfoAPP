@@ -134,7 +134,7 @@ echo "</table>";
 $netDevicesDataSQL = array();
 foreach ($parser["Network Devices"] as $key => $value) {
 	$a = array($key, $value["recieved"]["bytes"], $value["sent"]["bytes"], $value["state"], $value["type"]);
-	$netSQL = "INSERT INTO `networkdevices` (`Name`, `ReceivedBytes`, `SentBytes`, `Status`, `DeviceType`, `NetworkDate`) VALUES (" . $a[0] . "," . $a[1] . "," . $a[2] . ",". $a[3] . "," . $a[4] . ", NOW())";
+	$netSQL = 'INSERT INTO `networkdevices` (`Name`, `ReceivedBytes`, `SentBytes`, `Status`, `DeviceType`, `NetworkDate`) VALUES ("' . $a[0] . '","' . $a[1] . '","' . $a[2] . '","' . $a[3] . '","' . $a[4] . '", NOW())';
 
 	array_push($netDevicesDataSQL, $netSQL);
 }
@@ -204,7 +204,12 @@ $databaseConnection->query($sqlSystem);
 $databaseConnection->query($sqlCPU);
 $databaseConnection->query($sqlRAM);
 foreach ($netDevicesDataSQL as $key => $value) {
-	$databaseConnection->query($key);
+	// $databaseConnection->query($key);
+	if ($databaseConnection->query($value) === TRUE) {
+		echo "New record created successfully";
+	} else {
+		echo "Error: " . $value . "<br>" . $databaseConnection->error;
+	}
 }
 
 
