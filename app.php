@@ -12,7 +12,7 @@
 <body>
 <?php
 
-
+include 'sqling.php';
 // emergency way to show info about devices
 $emergency = false;
 
