@@ -12,27 +12,27 @@ Drives:
 Identificator; Name; Vendor; Device; Size; Date;
 
 
-CREATE TABLE System2(
---    idSystem2 INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Load2 VARCHAR(22) NOT NULL,
+CREATE TABLE System(
+    idSystem INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    Load VARCHAR(22) NOT NULL,
     Processes INT UNSIGNED NOT NULL,
 	Threads INT UNSIGNED NOT NULL,
     Uptime VARCHAR(22) NULL,
-    hostname VARCHAR(22) NULL,
-	Date2 datetime  NOT NULL
---    PRIMARY KEY(idSystem2)
+    Hostname VARCHAR(22) NULL,
+	SystemDate datetime  NOT NULL
+    PRIMARY KEY(idSystem)
 );
 INSERT INTO System2(idSystem2, Load2, Processes, Threads, Uptime, hostname, Date2)
 VALUES ('Load', 'Processes', 'Threads', 'Uptime', 'Hostname', 'Date');
 
 
 CREATE TABLE CPUINFO(
---    idCPUINFO INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    idCPUINFO INT UNSIGNED NOT NULL AUTO_INCREMENT,
     Model VARCHAR(22) NOT NULL,
     MHz INT UNSIGNED NOT NULL,
     Usage_Percentage INT UNSIGNED NOT NULL,
-	Date2 DATETIME NOT NULL
---   PRIMARY KEY(idCPUINFO)
+	CPUDate DATETIME NOT NULL
+   PRIMARY KEY(idCPUINFO)
 ); 
 /*UPDATE CPUINFO 
 SET Model = 'Model', MHZ = 'AVGMHz', Usage_percentage = 'AVGUsage', Date2 = 'Date'*/
@@ -44,7 +44,7 @@ CREATE TABLE RAM(
     idRAM INT UNSIGNED NOT NULL AUTO_INCREMENT,
     Total VARCHAR(22) NULL,
     Free BIGINT UNSIGNED NOT NULL,
-    Date2 DATETIME NOT NULL,
+    RAMDate DATETIME NOT NULL,
     PRIMARY KEY(idRAM)
 ); 
 
@@ -57,12 +57,12 @@ VALUES (1, 'Total', 'Free', 'Date');
 
 CREATE TABLE NetworkDevices(
     idNetworkDevices INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    NAME VARCHAR(22) NOT NULL,
+    Name VARCHAR(22) NOT NULL,
     ReceivedBytes VARCHAR(22) NOT NULL,
     SentBytes VARCHAR(22) NOT NULL,
-    state2 VARCHAR(22) NOT NULL,
-    type2 VARCHAR(22) NOT NULL,
-	Date2 DATETIME NOT NULL,
+    Status VARCHAR(22) NOT NULL,
+    DeviceType VARCHAR(22) NOT NULL,
+	NetworkDate DATETIME NOT NULL,
     PRIMARY KEY(idNetworkDevices)
 ); 
 /*UPDATE NetworkDevices 
@@ -83,12 +83,12 @@ VALUES (1, 'Name', 'ReceivedBytes', 'SentBytes', 'State', 'Type', 'Date');
 CREATE TABLE Drives(
     idDrives INT UNSIGNED NOT NULL AUTO_INCREMENT,
     Name VARCHAR(22) NOT NULL,
-    vendor VARCHAR(22) NOT NULL,
-    device VARCHAR(22) NOT NULL,
-    size2 BIGINT NOT NULL,
+    Vendor VARCHAR(22) NOT NULL,
+    Device VARCHAR(22) NOT NULL,
+    DeviceSize BIGINT NOT NULL,
 	Free BIGINT NULL,
 	Used BIGINT NULL,
-	date2 DATETIME NOT NULL,
+	DriveDate DATETIME NOT NULL,
     PRIMARY KEY(idDrives)
 ); 
 INSERT INTO Drives(idDrives, Name, vendor, device, size2, Free, Used, date2)
