@@ -163,17 +163,21 @@ echo "</table>";
 //     echo "Error: " . $sql . "<br>" . $databaseConnection->error;
 // }
 
-$databaseConnection->close();
-echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
-echo $parser["CPU"][0]["Model"];
-echo '</br>';
+// $databaseConnection->close();
+// echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
+// echo $parser["CPU"][0]["Model"];
+// echo '</br>';
 
-$MHzSum = 0;
-for ($i=0; $i < count($parser["CPU"]); $i++) { 
-	$MHzSum += $parser["CPU"][$i]["MHz"];
-}
-$avgMHz = $MHzSum / count($parser["CPU"]);
-echo $avgMHz;
+// $MHzSum = 0;
+// $usageSum = 0;
+// for ($i=0; $i < count($parser["CPU"]); $i++) { 
+// 	$MHzSum += $parser["CPU"][$i]["MHz"];
+// 	$usageSum += $parser["CPU"][$i]["usage_percentage"];
+// }
+// $avgMHz = $MHzSum / count($parser["CPU"]);
+// $avgUsage = $usageSum / count($parser["CPU"]);
+// echo $avgMHz;
+// echo $avgUsage;
 
 ?>
 <script src="main.js"></script>
