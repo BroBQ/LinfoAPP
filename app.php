@@ -78,6 +78,16 @@ foreach ($parser["CPU"] as $key => $value) {
 }
 echo "</table>";
 
+$MHzSum = 0;
+$usageSum = 0;
+for ($i=0; $i < count($parser["CPU"]); $i++) { 
+	$MHzSum += $parser["CPU"][$i]["MHz"];
+	$usageSum += $parser["CPU"][$i]["usage_percentage"];
+}
+$avgMHz = $MHzSum / count($parser["CPU"]);
+$avgUsage = $usageSum / count($parser["CPU"]);
+$sqlCPU = "INSERT INTO `cpuinfo` (`Model`, `MHz`, `UsagePercentage`, `CPUDate`) VALUES (" . $parser["CPU"][0]["Model"] . "," . $avgMHz . "," . $avgUsage . ", NOW())";
+
 echo "<br/>";
 
 // Table for RAM
