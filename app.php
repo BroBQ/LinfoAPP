@@ -131,6 +131,14 @@ foreach ($parser["Network Devices"] as $key => $value) {
 }
 echo "</table>";
 
+$netDevicesDataSQL = array();
+foreach ($parser["Network Devices"] as $key => $value) {
+	$a = array($key, $value["recived"]["bytes"], $value["sent"]["bytes"], $value["state"], $value["type"]);
+	$netSQL = "INSERT INTO `networkdevices` (`Name`, `ReceivedBytes`, `SentBytes`, `Status`, `DeviceType`, `NetworkDate`) VALUES (" . $a[0] . "," . $a[1] . "," . $a[2] . ",". $a[3] . "," . $a[4] . ", NOW())";
+
+	array_push($netDevicesDataSQL, $netSQL);
+}
+
 echo "<br/>";
 
 // Table for Hard Disks
@@ -176,7 +184,8 @@ echo "</table>";
 // }
 
 // $databaseConnection->close();
-echo '<pre>' . var_export($parser["RAM"], true) . '</pre>';
+echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
+echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
 // echo $parser["CPU"][0]["Model"];
 // echo '</br>';
 
