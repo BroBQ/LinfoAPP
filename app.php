@@ -12,7 +12,7 @@
 <body>
 <?php
 
-include 'sqling.php';
+require('./sqling.php');
 // emergency way to show info about devices
 $emergency = false;
 
@@ -151,10 +151,11 @@ foreach ($parser["Mounts"] as $key => $value) {
 }
 echo "</table>";
 
-connect();
-createSQL($parser);
-send();
-closeConnection();
+$sqling = new Sqling;
+$sqling->connect();
+$sqling->createSQL($parser);
+$sqling->send();
+$sqling->closeConnection();
 
 if ($emergency == true) {
 	echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
