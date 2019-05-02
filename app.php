@@ -177,14 +177,14 @@ foreach ($parser["Mounts"] as $key => $value) {
 echo "</table>";
 
 // $databaseConnection->query($sqlSystem);
-if ($databaseConnection->query($sqlCPU) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sqlSystem . "<br>" . $databaseConnection->error;
-}
+// if ($databaseConnection->query($sqlCPU) === TRUE) {
+//     echo "New record created successfully";
+// } else {
+//     echo "Error: " . $sqlSystem . "<br>" . $databaseConnection->error;
+// }
 
 // $databaseConnection->close();
-echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
+// echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
 // echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
 // echo $parser["CPU"][0]["Model"];
 // echo '</br>';
@@ -204,12 +204,7 @@ $databaseConnection->query($sqlSystem);
 $databaseConnection->query($sqlCPU);
 $databaseConnection->query($sqlRAM);
 foreach ($netDevicesDataSQL as $key => $value) {
-	// $databaseConnection->query($key);
-	if ($databaseConnection->query($value) === TRUE) {
-		echo "New record created successfully";
-	} else {
-		echo "Error: " . $value . "<br>" . $databaseConnection->error;
-	}
+	$databaseConnection->query($value);
 }
 
 
