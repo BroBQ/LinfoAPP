@@ -4,9 +4,13 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "linfoapp";
-$databaseConnection = new mysqli($servername, $username, $password, $dbname);
-if ($databaseConnection->connect_error) {
-    die("Connection failed: " . $databaseConnection->connect_error);
+
+
+function connect() {
+	$databaseConnection = new mysqli($servername, $username, $password, $dbname);
+	if ($databaseConnection->connect_error) {
+		die("Connection failed: " . $databaseConnection->connect_error);
+	}
 }
 
 //creating sql for system table
