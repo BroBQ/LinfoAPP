@@ -207,6 +207,7 @@ foreach ($netDevicesDataSQL as $key => $value) {
 	$databaseConnection->query($value);
 }
 
+$databaseConnection->close();
 
 ?>
 <script src="main.js"></script>
