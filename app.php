@@ -21,7 +21,8 @@ if ($databaseConnection->connect_error) {
     die("Connection failed: " . $databaseConnection->connect_error);
 } 
 
-
+// emergency way to show info about devices
+$emergency = false;
 
 // Load libs
 require_once dirname(__FILE__).'/init.php';
@@ -208,6 +209,14 @@ foreach ($netDevicesDataSQL as $key => $value) {
 }
 
 $databaseConnection->close();
+
+if ($emergency == true) {
+	echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
+	echo '<pre>' . var_export($parser["RAM"], true) . '</pre>';
+	echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
+	echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
+	echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
+}
 
 ?>
 <script src="main.js"></script>
