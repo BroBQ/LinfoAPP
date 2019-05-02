@@ -54,7 +54,7 @@ echo "</table>";
 // echo '<pre>' . var_export($parser["UpTime"], true) . '</pre>';
 
 //creating sql for system table
-$sqlSystem = "INSERT INTO `system` (`Hostname`, `Processes`, `Threads`, `SystemLoad`, `Uptime`, `SystemDate`) VALUES (" . $parser['HostName'] . "," . $parser['processStats']['proc_total'] . "," . $parser['processStats']['threads'] . "," . $parser['Load'] . ",'" . $parser['UpTime']['text'] . "', NOW())";
+$sqlSystem = 'INSERT INTO `system` (`Hostname`, `Processes`, `Threads`, `SystemLoad`, `Uptime`, `SystemDate`) VALUES ("' . $parser['HostName'] . '","' . $parser['processStats']['proc_total'] . '","' . $parser['processStats']['threads'] . '","' . $parser['Load'] . '","' . $parser['UpTime']['text'] . '", NOW())';
 
 echo "<br/>";
 
