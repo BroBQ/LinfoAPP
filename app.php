@@ -34,7 +34,7 @@ echo "<tr><td>Kernel:</td><td>$parser[Kernel]</td></tr>";
 echo "<tr><td>Hostname:</td><td>$parser[HostName]</td></tr>";
 echo "<tr><td>Architecture:</td><td>$parser[CPUArchitecture]</td></tr>";
 echo "<tr><td>Porcesses:</td><td>" . $parser["processStats"]["proc_total"] . "</td></tr>";
-echo "<tr><td>Porcesses:</td><td>" . $parser["processStats"]["threads"] . "</td></tr>";
+echo "<tr><td>Threads:</td><td>" . $parser["processStats"]["threads"] . "</td></tr>";
 echo "<tr><td>Load:</td><td>$parser[Load]</td></tr>";
 echo "<tr><td>CPU Usage:</td><td>" . $parser["cpuUsage"] . "</td></tr>";
 echo "<tr><td>Uptime:</td><td>" . $parser["UpTime"]["text"] . "</td></tr>";
