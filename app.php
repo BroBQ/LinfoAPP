@@ -11,6 +11,17 @@
 </head>
 <body>
 <?php
+//connecting database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "linfoapp";
+$databaseConnection = new mysqli($servername, $username, $password, $dbname);
+if ($databaseConnection->connect_error) {
+    die("Connection failed: " . $databaseConnection->connect_error);
+} 
+
+
 
 // Load libs
 require_once dirname(__FILE__).'/init.php';
@@ -41,6 +52,9 @@ echo "<tr><td>Uptime:</td><td>" . $parser["UpTime"]["text"] . "</td></tr>";
 echo "<tr><td>Booted:</td><td>" . date('d/m/Y H:i:s', $parser["UpTime"]["bootedTimestamp"]) . "</td></tr>";
 echo "</table>";
 // echo '<pre>' . var_export($parser["UpTime"], true) . '</pre>';
+
+//creating sql for system table
+$sqlSystem = "INSERT INTO `system` (`Hostname`, `Processes`, `Threads`, `SystemLoad`, `Uptime`, `SystemDate`) VALUES (" . $parser['HostName'] . "," . $parser['processStats']['proc_total'] . "," . $parser['processStats']['threads'] . "," . $parser['Load'] . "," . $parser['UpTime']['text'] . ", NOW())";
 
 echo "<br/>";
 
@@ -141,6 +155,26 @@ foreach ($parser["Mounts"] as $key => $value) {
 	echo "<tr><td id='devtype'>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . "</td><td>" . $value["size"] . "</td><td>" . $value["used"] . "</td><td>" . $value["free"] . "</td></tr>";	
 }
 echo "</table>";
+
+// $databaseConnection->query($sqlSystem);
+// if ($databaseConnection->query($sql) === TRUE) {
+//     echo "New record created successfully";
+// } else {
+//     echo "Error: " . $sql . "<br>" . $databaseConnection->error;
+// }
+
+$databaseConnection->close();
+echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
+echo $parser["CPU"][0]["Model"];
+echo '</br>';
+
+$MHzSum = 0;
+for ($i=0; $i < count($parser["CPU"]); $i++) { 
+	$MHzSum += $parser["CPU"][$i]["MHz"];
+}
+$avgMHz = $MHzSum / count($parser["CPU"]);
+echo $avgMHz;
+
 ?>
 <script src="main.js"></script>
 <script src="bubbles.js"></script>
