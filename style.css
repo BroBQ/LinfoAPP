@@ -4,6 +4,12 @@ body {
 	/* width: 100vw; */
 }
 
+@media only screen and (max-width: 400px) {
+	body {
+		font-size: 100%;
+	}
+}
+
 table {
 	border: 1px solid cornflowerblue;
 	border-collapse: collapse;
