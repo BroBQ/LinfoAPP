@@ -97,9 +97,10 @@ foreach ($parser["Network Devices"] as $key => $value) {
 	foreach ($value as $key2 => $value2) {
 		if($key2=="recieved" || $key2=="sent") {
 			//echo "<td class='parameter'>$key2</td>";
-			echo "<td>";
+			echo "<td class='bytes'>";
 			foreach ($value2 as $key3 => $value3) {
-				echo "$key3 $value3 ";
+				if ($key3 == "bytes")
+					echo $value3;
 			}
 			echo "</td>";
 		}
