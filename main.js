@@ -34,7 +34,11 @@ const repleaceBytesToGigaBytes = function () {
 	bytesClass.forEach(element => {
 		// console.log(Math.round(parseInt(element.innerText)/1024/1024/1024));
 		// console.log((parseInt(element.innerText) / ‭1073741824));‬
-		element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GB";
+		if (element.innerText == "") {
+			//does nothing
+		} else {
+			element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GB";
+		}
 	});
 }
 
