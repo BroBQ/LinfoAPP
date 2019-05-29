@@ -127,14 +127,19 @@ foreach ($parser["HD"] as $key => $value) {
 	echo "<tr>";
 	echo "<td>Drive $key</td>";
 	foreach ($value as $key2 => $value2) {
-		if($key2 == 'partitions') {			
+		if($key2 == 'device' || $key2 == 'vendor') {
+			//does nothing
+		} else if($key2 == 'partitions') {			
 			foreach ($value2 as $key3 => $value3) {
 				echo "<tr>";
 				echo "<td>Partition $key3</td>";
-				echo "<td colspan='8'>$value3[size] B</td>";
+				echo '<td colspan="8" class="bytes">' . $value3["size"] . '</td>';
 				echo "</tr>";
 			}			
 		} else if($key2 == 'reads' || $key2 == 'writes') {
+			//does nothing
+		} else if($key2 == 'size') {
+			echo "<td class='bytes'>$value2</td>";
 		} else {
 			echo "<td class='parameter'>$key2</td>";
 			echo "<td>$value2</td>";
