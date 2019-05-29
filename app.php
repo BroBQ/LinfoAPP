@@ -13,167 +13,57 @@
 <?php
 
 require('./sqling.php');
+require('./objects.php');
 // emergency way to show info about devices
 $emergency = false;
 
 // Load libs
-require_once dirname(__FILE__).'/init.php';
+// require_once dirname(__FILE__).'/init.php';
 
 // Load settings and language
-$linfo = new Linfo;
+// $linfo = new Linfo;
 
 // Run through /proc or wherever and build our list of settings
-$linfo->scan();
-$anotherParser = $linfo->getParser();
+// $linfo->scan();
+// $anotherParser = $linfo->getParser();
 
-$names = ["OS", "Kernel", "AccessedIP", "Distro", "RAM", "HD", "Mounts", "Load", "HostName", "UpTime", "CPU", "Model", "CPUArchitecutre", "Network Devices", "Devices", "Temps", "Battery", "Raid", "Wifi", "SoundCards", "processStats", "services", "numLoggedIn", "virtualization", "cpuUsage", "phpVersion", "webService", "contains"];
-$parser = $linfo->getInfo();
+// $names = ["OS", "Kernel", "AccessedIP", "Distro", "RAM", "HD", "Mounts", "Load", "HostName", "UpTime", "CPU", "Model", "CPUArchitecutre", "Network Devices", "Devices", "Temps", "Battery", "Raid", "Wifi", "SoundCards", "processStats", "services", "numLoggedIn", "virtualization", "cpuUsage", "phpVersion", "webService", "contains"];
+// $parser = $linfo->getInfo();
+
+$objects = new Objects();
 
 // Table for system specs
-echo "<table>";
-echo "<tr><td class='parameter' colspan='2'>SYSTEM:</td></tr>";
-echo "<tr><td>OS:</td><td>$parser[OS]</td></tr>";
-// echo "<tr><td>Distribution:</td><td>$parser[Distro]</td></tr>";
-echo "<tr><td>Kernel:</td><td>$parser[Kernel]</td></tr>";
-echo "<tr><td>Hostname:</td><td>$parser[HostName]</td></tr>";
-echo "<tr><td>Architecture:</td><td>$parser[CPUArchitecture]</td></tr>";
-echo "<tr><td>Porcesses:</td><td>" . $parser["processStats"]["proc_total"] . "</td></tr>";
-echo "<tr><td>Threads:</td><td>" . $parser["processStats"]["threads"] . "</td></tr>";
-echo "<tr><td>Load:</td><td>$parser[Load]</td></tr>";
-// echo "<tr><td>CPU Usage:</td><td>" . $parser["cpuUsage"] . "</td></tr>";
-echo "<tr><td>Uptime:</td><td>" . $parser["UpTime"]["text"] . "</td></tr>";
-echo "<tr><td>Booted:</td><td>" . date('d/m/Y H:i:s', $parser["UpTime"]["bootedTimestamp"]) . "</td></tr>";
-echo "</table>";
-// echo '<pre>' . var_export($parser["UpTime"], true) . '</pre>';
-
+$objects->showSystem();
 
 echo "<br/>";
 
-// Table for CPU
-echo "<table>";
-echo "<tr><td class='parameter' colspan='2'>CPU:</td></tr>";
-foreach ($parser["CPU"] as $key => $value) {
-	// echo $key . " " . $value;
-	echo "<tr>";
-	echo "<td>Core $key</td>";
-	echo "<td>";
-	foreach ($value as $key2 => $value2) {
-		if ($key2 == "usage_percentage") {
-			echo "Usage Percentage" . " " . $value2 . " ";
-		} else {
-		echo $key2 . " " . $value2 . " ";
-		}
-	}
-	echo "</td>";
-	echo "</tr>";
-}
-echo "</table>";
-
-
+$objects->showCPU();
 
 echo "<br/>";
 
-// Table for RAM
-echo "<table>";
-echo "<tr><td class='parameter' colspan='2'>RAM:</td></tr>";
-foreach ($parser["RAM"] as $key => $value) {
-	if ($value == "Physical") {
-		echo "<tr><td>$key</td><td>$value</td></tr>";
-	} else {
-		echo '<tr><td>' . $key . '</td><td class="bytes">' . $value . '</td></tr>';
-	}
-}
-echo "</table>";
-
+$objects->showRAM();
 
 echo "<br/>";
 
-// Table for Network Devices
-echo "<table>";
-echo "<tr><td class='parameter'>Network Devices:</td><td class='parameter'>recieved</td><td class='parameter'>sent</td><td class='parameter'>state</td></tr>";
-foreach ($parser["Network Devices"] as $key => $value) {
-	echo "<tr>";
-	echo "<td>$key</td>";
-	foreach ($value as $key2 => $value2) {
-		if($key2=="recieved" || $key2=="sent") {
-			//echo "<td class='parameter'>$key2</td>";
-			echo "<td class='bytes'>";
-			foreach ($value2 as $key3 => $value3) {
-				if ($key3 == "bytes")
-					echo $value3;
-			}
-			echo "</td>";
-		}
-		else if($key2=="type") {
-			//does nothing
-		} else {
-			if($value2 == "Media disconnected") {
-				echo "<td>Not connected</td>";
-			} else {				
-				echo "<td>$value2</td>";
-			}
-		}
-	}
-	echo "</tr>";
-}
-echo "</table>";
-
+$objects->showNetwork();
 
 echo "<br/>";
 
-// Table for Hard Disks
-echo "<table>";
-echo "<tr><td class='parameter' colspan='9'>Drives:</td></tr>";
-foreach ($parser["HD"] as $key => $value) {
-	echo "<tr>";
-	echo "<td>Drive $key</td>";
-	foreach ($value as $key2 => $value2) {
-		if($key2 == 'device' || $key2 == 'vendor') {
-			//does nothing
-		} else if($key2 == 'partitions') {			
-			foreach ($value2 as $key3 => $value3) {
-				echo "<tr>";
-				echo "<td>Partition $key3</td>";
-				echo '<td colspan="8" class="bytes">' . $value3["size"] . '</td>';
-				echo "</tr>";
-			}			
-		} else if($key2 == 'reads' || $key2 == 'writes') {
-			//does nothing
-		} else if($key2 == 'size') {
-			echo "<td class='bytes'>$value2</td>";
-		} else {
-			echo "<td class='parameter'>$key2</td>";
-			echo "<td>$value2</td>";
-		}		
-	}
-	echo "</tr>";
-}
-echo "</table>";
+$objects->showDrives();
+
 // echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
 echo "<br/>";
 
 // Table for Mounted Drives
-echo "<table>";
-echo "<tr><td class='parameter' colspan='7'>Mounted Drives</td></tr>";
-echo "<tr id='devtypestyle'><td>Type</td><td>Mount Point</td><td>Label</td><td>Filesystem</td><td>Size</td><td>Used</td><td>Free</td></tr>";
-foreach ($parser["Mounts"] as $key => $value) {	
-	echo "<tr><td id='devtype'>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . '</td><td class="bytes">' . $value["size"] . '</td><td class="bytes">' . $value["used"] . '</td><td class="bytes">' . $value["free"] . "</td></tr>";	
-}
-echo "</table>";
+$objects->showMounted();
 
 $sqling = new Sqling;
 $sqling->connect();
-$sqling->createSQL($parser);
+$sqling->createSQL($objects->getParser());
 $sqling->send();
 $sqling->closeConnection();
 
-if ($emergency == true) {
-	echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
-	echo '<pre>' . var_export($parser["RAM"], true) . '</pre>';
-	echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
-	echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
-	echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
-}
+$objects->emergencyDisplay();
 
 ?>
 <script src="main.js"></script>
