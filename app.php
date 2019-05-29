@@ -80,7 +80,7 @@ foreach ($parser["RAM"] as $key => $value) {
 	if ($value == "Physical") {
 		echo "<tr><td>$key</td><td>$value</td></tr>";
 	} else {
-		echo "<tr><td>$key</td><td>$value B</td></tr>";
+		echo '<tr><td>' . $key . '</td><td class="bytes">' . $value . '</td></tr>';
 	}
 }
 echo "</table>";
