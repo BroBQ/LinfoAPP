@@ -90,23 +90,27 @@ echo "<br/>";
 
 // Table for Network Devices
 echo "<table>";
-echo "<tr><td class='parameter' colspan='9'>Network Devices:</td></tr>";
+echo "<tr><td class='parameter'>Network Devices:</td><td class='parameter'>recieved</td><td class='parameter'>sent</td><td class='parameter'>state</td></tr>";
 foreach ($parser["Network Devices"] as $key => $value) {
 	echo "<tr>";
 	echo "<td>$key</td>";
 	foreach ($value as $key2 => $value2) {
-		if($key2=="recieved" || $key2=="sent")
-		{
-			echo "<td class='parameter'>$key2</td>";
+		if($key2=="recieved" || $key2=="sent") {
+			//echo "<td class='parameter'>$key2</td>";
 			echo "<td>";
 			foreach ($value2 as $key3 => $value3) {
 				echo "$key3 $value3 ";
 			}
 			echo "</td>";
 		}
-		else
-		{
-			echo "<td class='parameter'>$key2</td><td>$value2</td>";
+		else if($key2=="type") {
+			//does nothing
+		} else {
+			if($value2 == "Media disconnected") {
+				echo "<td>Not connected</td>";
+			} else {				
+				echo "<td>$value2</td>";
+			}
 		}
 	}
 	echo "</tr>";
