@@ -28,3 +28,14 @@ allTr.forEach(element => {
 	element.addEventListener("mouseover", mouseover)
 	element.addEventListener("mouseout", mouseout)
 });
+
+const repleaceBytesToGigaBytes = function () {
+	const bytesClass = document.querySelectorAll(".bytes");
+	bytesClass.forEach(element => {
+		// console.log(Math.round(parseInt(element.innerText)/1024/1024/1024));
+		// console.log((parseInt(element.innerText) / ‭1073741824));‬
+		element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GB";
+	});
+}
+
+repleaceBytesToGigaBytes();
