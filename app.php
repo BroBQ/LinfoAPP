@@ -10,6 +10,16 @@
 	<link rel="icon" href="favicon.png" type="image/x-con">
 </head>
 <body>
+<p>
+	Select size
+	<select onchange="changedSelect()">
+	  <option value="GiB">GiB</option>
+	  <option value="MiB">MiB</option>
+	  <option value="kiB">kiB</option>
+	  <option value="B">B</option>
+	</select>
+</p>
+
 <?php
 
 require('./sqling.php');
