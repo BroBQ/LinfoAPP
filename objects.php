@@ -85,7 +85,7 @@ class Objects {
 				if ($value == "Physical") {
 					echo "<tr><td>$key</td><td>$value</td></tr>";
 				} else {
-					echo '<tr><td>' . $key . '</td><td class="bytes">' . $value . '</td></tr>';
+					echo '<tr><td>' . $key . '</td><td class="bytes" data-bytes="' . $value . '">' . $value . '</td></tr>';
 				}
 			}
 			echo "</table>";
@@ -102,12 +102,12 @@ class Objects {
 				foreach ($value as $key2 => $value2) {
 					if($key2=="recieved" || $key2=="sent") {
 						//echo "<td class='parameter'>$key2</td>";
-						echo "<td class='bytes'>";
+						// echo "<td class='bytes'>";
 						foreach ($value2 as $key3 => $value3) {
 							if ($key3 == "bytes")
-								echo $value3;
+								echo "<td class='bytes' data-bytes='" . $value3 . "'>" . $value3 . "</td>";
 						}
-						echo "</td>";
+						// echo "</td>";
 					}
 					else if($key2=="type") {
 						//does nothing
@@ -139,13 +139,13 @@ class Objects {
 						foreach ($value2 as $key3 => $value3) {
 							echo "<tr>";
 							echo "<td>Partition $key3</td>";
-							echo '<td colspan="8" class="bytes">' . $value3["size"] . '</td>';
+							echo '<td colspan="8" class="bytes" data-bytes="' . $value3["size"] . '">' . $value3["size"] . '</td>';
 							echo "</tr>";
 						}			
 					} else if($key2 == 'reads' || $key2 == 'writes') {
 						//does nothing
 					} else if($key2 == 'size') {
-						echo "<td class='bytes'>$value2</td>";
+						echo "<td class='bytes' data-bytes='" . $value2 . "'>$value2</td>";
 					} else {
 						echo "<td class='parameter'>$key2</td>";
 						echo "<td>$value2</td>";
@@ -163,7 +163,7 @@ class Objects {
 			echo "<tr><td class='parameter' colspan='7'>Mounted Drives</td></tr>";
 			echo "<tr id='devtypestyle'><td>Type</td><td>Mount Point</td><td>Label</td><td>Filesystem</td><td>Size</td><td>Used</td><td>Free</td></tr>";
 			foreach ($this->parser["Mounts"] as $key => $value) {	
-				echo "<tr><td id='devtype'>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . '</td><td class="bytes">' . $value["size"] . '</td><td class="bytes">' . $value["used"] . '</td><td class="bytes">' . $value["free"] . "</td></tr>";	
+				echo "<tr><td id='devtype'>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . '</td><td class="bytes" data-bytes="' . $value["size"] . '">' . $value["size"] . '</td><td class="bytes" data-bytes="' . $value["used"] . '">' . $value["used"] . '</td><td class="bytes" data-bytes="' . $value["free"] . '">' . $value["free"] . "</td></tr>";
 			}
 			echo "</table>";
 		}
