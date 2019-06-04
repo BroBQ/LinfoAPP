@@ -67,13 +67,16 @@ const repleaceBytes = function () {
 			switch (document.querySelector("select").value)
 			{
 				case "GiB":
-					element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GiB";
+					element.innerText = Math.round(parseInt(element.dataset.bytes)/1024/1024/1024) + " GiB";
 				break;
 				case "MiB":
-					element.innerText = Math.round(parseInt(element.innerText)/1024/1024) + " MiB";
+					element.innerText = Math.round(parseInt(element.dataset.bytes)/1024/1024) + " MiB";
 				break;
 				case "kiB":
-					element.innerText = Math.round(parseInt(element.innerText)/1024) + " kiB";
+					element.innerText = Math.round(parseInt(element.dataset.bytes)/1024) + " kiB";
+				break;
+				case "B":
+					element.innerText = element.dataset.bytes + " B";
 				break;
 				default:
 				break;
