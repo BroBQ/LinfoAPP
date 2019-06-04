@@ -43,10 +43,12 @@ function loadJSON(callback) {
     xobj.send(null);  
 }
 
+let configuration = "";
+
 function init() {
 	loadJSON(function(response) {
 	 // Parse JSON string into object
-	   return JSON.parse(response);
+	   configuration = JSON.parse(response);
 	});
 }
 
