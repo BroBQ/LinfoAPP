@@ -90,6 +90,7 @@ init();
 
 const setValueFromConfiguration = () => {
 	select.value=configuration.bytes;
+	select.id=configuration.bytes;
 }
 // setTimeout(document.querySelector("select").value=configuration.bytes, 1000);
 // readConfig();
@@ -98,6 +99,7 @@ setTimeout(repleaceBytes, 500);
 
 function changedSelect() {
 	configuration.bytes=select.value;
+	select.id=select.value;
 	repleaceBytes();
 }
 
