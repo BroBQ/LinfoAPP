@@ -161,9 +161,9 @@ class Objects {
 		if ($this->mounted == true) {
 			echo "<table>";
 			echo "<tr><td class='parameter' colspan='7'>Mounted Drives</td></tr>";
-			echo "<tr id='devtypestyle'><td>Type</td><td>Mount Point</td><td>Label</td><td>Filesystem</td><td>Size</td><td>Used</td><td>Free</td></tr>";
+			echo "<tr id='devtypestyle'><td>Type</td><td>Mount Point</td><td>File-system</td><td>Size</td><td>Used</td><td>Free</td></tr>";
 			foreach ($this->parser["Mounts"] as $key => $value) {	
-				echo "<tr><td id='devtype'>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["label"] . "</td><td>" . $value["type"] . '</td><td class="bytes" data-bytes="' . $value["size"] . '">' . $value["size"] . '</td><td class="bytes" data-bytes="' . $value["used"] . '">' . $value["used"] . '</td><td class="bytes" data-bytes="' . $value["free"] . '">' . $value["free"] . "</td></tr>";
+				echo "<tr><td id='devtype'>" . $value["devtype"] . "</td><td>" . $value["mount"] . "</td><td>" . $value["type"] . '</td><td class="bytes" data-bytes="' . $value["size"] . '">' . $value["size"] . '</td><td class="bytes" data-bytes="' . $value["used"] . '">' . $value["used"] . '</td><td class="bytes" data-bytes="' . $value["free"] . '">' . $value["free"] . "</td></tr>";
 			}
 			echo "</table>";
 		}
