@@ -96,5 +96,12 @@ const changedSelect = () => {
 	console.log(this);
 }
 
+init();
+
+const setSelectValue = () => {
+	document.querySelector("select").value=configuration.bytes;
+}
+// setTimeout(document.querySelector("select").value=configuration.bytes, 1000);
 // readConfig();
+setTimeout(setSelectValue, 250);
 setTimeout(repleaceBytes, 20000);
