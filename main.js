@@ -29,17 +29,49 @@ allTr.forEach(element => {
 	element.addEventListener("mouseout", mouseout)
 });
 
-const repleaceBytesToGigaBytes = function () {
+let size = "";
+
+const repleaceBytes = function () {
 	const bytesClass = document.querySelectorAll(".bytes");
 	bytesClass.forEach(element => {
 		// console.log(Math.round(parseInt(element.innerText)/1024/1024/1024));
 		// console.log((parseInt(element.innerText) / ‭1073741824));‬
 		if (element.innerText == "") {
 			//does nothing
-		} else {
-			element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GB";
+		} else {			
+			switch (document.querySelector("select").value)
+			{
+				case "GiB":
+				console.log("why?");
+					element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GiB";
+				break;
+				case "MiB":
+					element.innerText = Math.round(parseInt(element.innerText)/1024/1024) + " MiB";
+				break;
+				case "kiB":
+					element.innerText = Math.round(parseInt(element.innerText)/1024) + " kiB";
+				break;
+				default:
+				break;
+			}
+//			element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GB";
 		}
 	});
 }
 
-repleaceBytesToGigaBytes();
+const readConfig = () => {
+	fetch('config.txt')
+	.then(response => response.text())
+	.then(text => {
+		document.querySelector("select").value=text;
+		size=text;
+		// console.log(text);
+	});
+}
+
+const changedSelect = () => {
+	console.log(this);
+}
+
+readConfig();
+setTimeout(repleaceBytes(), 20000);
