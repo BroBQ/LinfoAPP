@@ -19,7 +19,7 @@
 	  <option value="B">B</option>
 	</select>
 </p>
-
+<label><input type="checkbox">Disable autorefresh</label>
 <?php
 
 require('./sqling.php');
