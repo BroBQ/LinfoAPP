@@ -1,10 +1,3 @@
-function init() {
-	loadJSON(function(response) {
-	 // Parse JSON string into object
-	   var actual_JSON = JSON.parse(response);
-	});
-}
-
 const resetButton = document.createElement("button")
 resetButton.textContent = "Refresh page"
 document.body.appendChild(resetButton)
@@ -39,7 +32,7 @@ allTr.forEach(element => {
 function loadJSON(callback) {   
 
     var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
+	xobj.overrideMimeType("application/json");
     xobj.open('GET', 'config.json', true);
     xobj.onreadystatechange = function () {
           if (xobj.readyState == 4 && xobj.status == "200") {
@@ -48,7 +41,14 @@ function loadJSON(callback) {
           }
     };
     xobj.send(null);  
- }
+}
+
+ function init() {
+	loadJSON(function(response) {
+	 // Parse JSON string into object
+	   return JSON.parse(response);
+	});
+}
 
 let size = "";
 
