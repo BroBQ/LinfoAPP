@@ -80,19 +80,19 @@ const repleaceBytes = function () {
 	});
 }
 
-const readConfig = () => {
-	fetch('config.txt')
-	.then(response => response.text())
-	.then(text => {
-		document.querySelector("select").value=text;
-		size=text;
-		// console.log(text);
-	});
-}
+// const readConfig = () => {
+// 	fetch('config.txt')
+// 	.then(response => response.text())
+// 	.then(text => {
+// 		document.querySelector("select").value=text;
+// 		size=text;
+// 		// console.log(text);
+// 	});
+// }
 
 const changedSelect = () => {
 	console.log(this);
 }
 
-readConfig();
+// readConfig();
 setTimeout(repleaceBytes(), 20000);
