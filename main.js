@@ -95,4 +95,4 @@ const changedSelect = () => {
 }
 
 // readConfig();
-setTimeout(repleaceBytes(), 20000);
+setTimeout(repleaceBytes, 20000);
