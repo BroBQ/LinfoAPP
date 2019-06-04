@@ -103,9 +103,7 @@ function changedSelect() {
 	repleaceBytes();
 }
 
-const time = 8000;
-
-let intervalID = setInterval(refresh, time);
+let intervalID = setInterval(refresh, configuration.time);
 let intervalWorking = true;
 
 const switchRefreshement = () => {
@@ -113,7 +111,7 @@ const switchRefreshement = () => {
 		clearInterval(intervalID);
 		intervalWorking = false;
 	} else {
-		intervalID = setInterval(refresh, time);
+		intervalID = setInterval(refresh, configuration.time);
 		intervalWorking = true;
 	}
 }
