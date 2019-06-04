@@ -52,6 +52,8 @@ function init() {
 	});
 }
 
+const select = document.querySelector("select")
+
 let size = "";
 
 const repleaceBytes = function () {
@@ -65,7 +67,6 @@ const repleaceBytes = function () {
 			switch (document.querySelector("select").value)
 			{
 				case "GiB":
-				console.log("why?");
 					element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GiB";
 				break;
 				case "MiB":
@@ -82,26 +83,34 @@ const repleaceBytes = function () {
 	});
 }
 
-// const readConfig = () => {
-// 	fetch('config.txt')
-// 	.then(response => response.text())
-// 	.then(text => {
-// 		document.querySelector("select").value=text;
-// 		size=text;
-// 		// console.log(text);
-// 	});
-// }
-
-const changedSelect = () => {
-	console.log(this);
-}
-
 init();
 
-const setSelectValue = () => {
-	document.querySelector("select").value=configuration.bytes;
+const setValueFromConfiguration = () => {
+	select.value=configuration.bytes;
 }
 // setTimeout(document.querySelector("select").value=configuration.bytes, 1000);
 // readConfig();
-setTimeout(setSelectValue, 250);
-setTimeout(repleaceBytes, 20000);
+setTimeout(setValueFromConfiguration, 250);
+setTimeout(repleaceBytes, 500);
+
+function changedSelect() {
+	configuration.bytes=select.value;
+	repleaceBytes();
+}
+
+const time = 8000;
+
+let intervalID = setInterval(refresh, time);
+let intervalWorking = true;
+
+const switchRefreshement = () => {
+	if (intervalWorking) {
+		clearInterval(intervalID);
+		intervalWorking = false;
+	} else {
+		intervalID = setInterval(refresh, time);
+		intervalWorking = true;
+	}
+}
+
+document.querySelector("input").addEventListener("click", switchRefreshement);
