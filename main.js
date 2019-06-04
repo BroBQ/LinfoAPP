@@ -43,7 +43,7 @@ function loadJSON(callback) {
     xobj.send(null);  
 }
 
- function init() {
+function init() {
 	loadJSON(function(response) {
 	 // Parse JSON string into object
 	   return JSON.parse(response);
