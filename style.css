@@ -62,3 +62,9 @@ td:first-child {
 	background-color: gainsboro;
 	font-weight: bold;
 }
+
+select {
+	width: 100px;
+	background-color: yellow;
+	font-size: 125%;
+}
