@@ -2,6 +2,10 @@ const resetButton = document.createElement("button")
 resetButton.textContent = "Refresh page"
 document.body.appendChild(resetButton)
 
+if(isMobileDevice()) {
+	document.querySelector("p").innerText="";
+}
+
 const refresh = () => {
 	location.reload()
 }
@@ -30,16 +34,16 @@ allTr.forEach(element => {
 });
 
 function loadJSON(callback) {   
-	var xobj = new XMLHttpRequest();
+    var xobj = new XMLHttpRequest();
 	xobj.overrideMimeType("application/json");
-	xobj.open('GET', 'config.json', true);
-	xobj.onreadystatechange = function () {
-		if (xobj.readyState == 4 && xobj.status == "200") {
-			// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-			callback(xobj.responseText);
-		}
-	};
-	xobj.send(null);  
+    xobj.open('GET', 'config.json', false);
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+        	// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+        	callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);  
 }
 
 let configuration = "";
@@ -62,6 +66,8 @@ const repleaceBytes = function () {
 		// console.log((parseInt(element.innerText) / ‭1073741824));‬
 		if (element.innerText == "") {
 			//does nothing
+		} else if(isMobileDevice()) {
+			element.innerText = ((element.dataset.bytes)/1024/1024/1024).toFixed(2) + " GiB";
 		} else {			
 			switch (document.querySelector("select").value)
 			{
@@ -88,8 +94,10 @@ const repleaceBytes = function () {
 init();
 
 const setValueFromConfiguration = () => {
-	select.value=configuration.bytes;
-	select.id=configuration.bytes;
+	if(!isMobileDevice()) {
+		select.value=configuration.bytes;
+		select.id=configuration.bytes;
+	}	
 }
 // setTimeout(document.querySelector("select").value=configuration.bytes, 1000);
 // readConfig();
@@ -116,3 +124,7 @@ const switchRefreshement = () => {
 }
 
 document.querySelector("input").addEventListener("click", switchRefreshement);
+
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
