@@ -3,19 +3,19 @@ require_once dirname(__FILE__).'/init.php';
 
 
 class Objects {
-	private $system = true;
-	private $cpu = true;
-	private $ram = true;
-	private $network = true;
-	private $drives = true;
-	private $mounted = true;
+	private $system;
+	private $cpu;
+	private $ram;
+	private $network; 
+	private $drives;
+	private $mounted;
 
 	private $linfo = "";
 	private $parser = "";
 
-	private $emergency = true;
+	private $emergency;
 
-	function __construct($sys = true, $processor = true, $memory = true, $net = true, $hd = true, $partitions = true, $rescue = true) {
+	function __construct($sys = true, $processor = true, $memory = true, $net = true, $hd = true, $partitions = true, $rescue = false) {
 		$this->system = $sys;
 		$this->cpu = $processor;
 		$this->ram = $memory;
