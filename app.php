@@ -30,6 +30,7 @@ $emergency = false;
 $sqling = new Sqling;
 $sqling->connect();
 $sqling->getHighestCPUUsage();
+$sqling->generateCPUWarning();
 
 // Load libs
 // require_once dirname(__FILE__).'/init.php';
