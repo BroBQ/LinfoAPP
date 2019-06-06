@@ -140,7 +140,7 @@ const switchShowingDate = () => {
 		dateSwitch = false;
 	} else {
 		ul.forEach(element => {
-			element.setAttribute("hidden");
+			element.removeAttribute("hidden");
 		});
 		dateSwitch = true;
 	}

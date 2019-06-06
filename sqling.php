@@ -89,12 +89,14 @@ class Sqling {
 				echo "<p><span class='red'>CPU warning value exceeded " . $dataFromDatabase->num_rows . " times!</span>";
 			}
 
-			echo "<ul>";
-			while($row = $dataFromDatabase->fetch_assoc()) {
-				echo "<li>" . $row['CPUDate'] . "</li>";
+			if($array["ShowErrorDate"]) {
+				echo "<ul>";
+				while($row = $dataFromDatabase->fetch_assoc()) {
+					echo "<li>" . $row['CPUDate'] . "</li>";
+				}
+				echo "</ul>";
+				echo "</p>";
 			}
-			echo "</ul>";
-			echo "</p>";
 		}
 
 		if ($dataFromDatabase2->num_rows > 0) {
@@ -103,12 +105,15 @@ class Sqling {
 			} else {
 				echo "<p><span class='pulsate'>CPU was overloaded " . $dataFromDatabase2->num_rows . " times!</span></p>";
 			}
-			echo "<ul>";
-			while($row = $dataFromDatabase2->fetch_assoc()) {
-				echo "<li>" . $row['CPUDate'] . "</li>";
+
+			if($array["ShowErrorDate"]) {
+				echo "<ul>";
+				while($row = $dataFromDatabase2->fetch_assoc()) {
+					echo "<li>" . $row['CPUDate'] . "</li>";
+				}
+				echo "</ul>";
+				echo "</p>";
 			}
-			echo "</ul>";
-			echo "</p>";
 		}
 	}
 
@@ -129,11 +134,13 @@ class Sqling {
 				echo "<p><span class='red'>RAM warning value exceeded " . $dataFromDatabase->num_rows . " times!</span>";
 			}
 
-			echo "<ul>";
-			while($row = $dataFromDatabase->fetch_assoc()) {
-				echo "<li>" . $row['RAMDate'] . "</li>";
-			}
-			echo "</ul>";
+			if($array["ShowErrorDate"]) {
+				echo "<ul>";
+				while($row = $dataFromDatabase->fetch_assoc()) {
+					echo "<li>" . $row['RAMDate'] . "</li>";
+				}
+				echo "</ul>";
+			}	
 			echo "</p>";
 		}
 
@@ -143,11 +150,14 @@ class Sqling {
 			} else {
 				echo "<p><span class='pulsate'>RAM was overloaded " . $dataFromDatabase2->num_rows . " times!</span></p>";
 			}
-			echo "<ul>";
-			while($row = $dataFromDatabase2->fetch_assoc()) {
-				echo "<li>" . $row['RAMDate'] . "</li>";
-			}
-			echo "</ul>";
+
+			if($array["ShowErrorDate"]) {
+				echo "<ul>";
+				while($row = $dataFromDatabase2->fetch_assoc()) {
+					echo "<li>" . $row['RAMDate'] . "</li>";
+				}
+				echo "</ul>";
+			}			
 			echo "</p>";
 		}
 
