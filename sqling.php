@@ -69,8 +69,36 @@ class Sqling {
 			while($row = $dataFromDatabase->fetch_assoc()) {
 				echo "<p>Highest CPU Usage noticed at: " . $row["CPUDate"] . " with value " . $row["UsagePercentage"] . "%</p>";
 			}
-		} else {
-			echo "0 results";
+		} 
+	} 
+
+	function generateCPUWarning() {
+		$JSON = file_get_contents("config.json");
+		$array = json_decode($JSON, true);
+
+		$sqlCPUWarning = "SELECT * FROM cpuinfo WHERE (UsagePercentage >= " . $array["CPUwarning"] . ") AND (CPUDate > DATE_SUB(NOW(), INTERVAL 1 DAY))";
+		$sqlCPUMax = "SELECT * FROM cpuinfo WHERE (UsagePercentage >= " . $array["CPUmax"] . ") AND (CPUDate > DATE_SUB(NOW(), INTERVAL 1 DAY))";
+
+		$dataFromDatabase = $this->databaseConnection->query($sqlCPUWarning);
+		$dataFromDatabase2 = $this->databaseConnection->query($sqlCPUMax);
+
+		if ($dataFromDatabase->num_rows > 0) {
+			echo "<p><span class='red'>CPU warning value exceeded " . $dataFromDatabase->num_rows . " times!</span>";
+			echo "<ul>";
+			while($row = $dataFromDatabase->fetch_assoc()) {
+				echo "<li>" . $row['CPUDate'] . "</li>";
+			}
+			echo "</ul>";
+			echo "</p>";
+		}
+
+		if ($dataFromDatabase2->num_rows > 0) {
+			echo "<p><span class='pulsate'>CPU was overloaded " . $dataFromDatabase2->num_rows . " times!</span></p>";
+			while($row = $dataFromDatabase2->fetch_assoc()) {
+				echo "<li>" . $row['CPUDate'] . "</li>";
+			}
+			echo "</ul>";
+			echo "</p>";
 		}
 	}
 }
