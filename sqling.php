@@ -83,7 +83,12 @@ class Sqling {
 		$dataFromDatabase2 = $this->databaseConnection->query($sqlCPUMax);
 
 		if ($dataFromDatabase->num_rows > 0) {
-			echo "<p><span class='red'>CPU warning value exceeded " . $dataFromDatabase->num_rows . " times!</span>";
+			if ($dataFromDatabase->num_rows == 1) {
+				echo "<p><span class='red'>CPU warning value exceeded " . $dataFromDatabase->num_rows . " time!</span>";
+			} else {
+				echo "<p><span class='red'>CPU warning value exceeded " . $dataFromDatabase->num_rows . " times!</span>";
+			}
+
 			echo "<ul>";
 			while($row = $dataFromDatabase->fetch_assoc()) {
 				echo "<li>" . $row['CPUDate'] . "</li>";
@@ -93,7 +98,12 @@ class Sqling {
 		}
 
 		if ($dataFromDatabase2->num_rows > 0) {
-			echo "<p><span class='pulsate'>CPU was overloaded " . $dataFromDatabase2->num_rows . " times!</span></p>";
+			if ($dataFromDatabase2->num_rows == 1) {
+				echo "<p><span class='pulsate'>CPU was overloaded " . $dataFromDatabase2->num_rows . " time!</span></p>";
+			} else {
+				echo "<p><span class='pulsate'>CPU was overloaded " . $dataFromDatabase2->num_rows . " times!</span></p>";
+			}
+			echo "<ul>";
 			while($row = $dataFromDatabase2->fetch_assoc()) {
 				echo "<li>" . $row['CPUDate'] . "</li>";
 			}
