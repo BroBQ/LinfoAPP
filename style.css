@@ -68,3 +68,66 @@ select {
 	background-color: yellow;
 	font-size: 125%;
 }
+
+.pulsate {
+	background-color: yellow;
+	-webkit-animation: color_change 2s infinite alternate;
+	-moz-animation: color_change 2s infinite alternate;
+	-ms-animation: color_change 2s infinite alternate;
+	-o-animation: color_change 2s infinite alternate;
+	animation: color_change 2s infinite alternate;
+}
+
+@-webkit-keyframes color_change {
+	from {
+		color: red;
+	}
+
+	to {
+		color: blue;
+	}
+}
+
+@-moz-keyframes color_change {
+	from {
+		color: red;
+	}
+
+	to {
+		color: blue;
+	}
+}
+
+@-ms-keyframes color_change {
+	from {
+		color: red;
+	}
+
+	to {
+		color: blue;
+	}
+}
+
+@-o-keyframes color_change {
+	from {
+		color: red;
+	}
+
+	to {
+		color: blue;
+	}
+}
+
+@keyframes color_change {
+	from {
+		color: red;
+	}
+
+	to {
+		color: blue;
+	}
+}
+
+.red {
+	color: red;
+}
