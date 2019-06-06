@@ -77,6 +77,6 @@ $objects->emergencyDisplay();
 
 ?>
 <script src="main.js"></script>
-<script src="bubbles.js"></script>
+<!-- <script src="bubbles.js"></script> -->
 </body>
 </html>
