@@ -1,4 +1,6 @@
 {
     "bytes": "GiB",
-	"time": 15000
+	"time": 15000,
+	"CPUwarning": 70,
+	"CPUmax": 90
 }
