@@ -13,9 +13,9 @@ class Objects {
 	private $linfo = "";
 	private $parser = "";
 
-	private $emergency = false;
+	private $emergency = true;
 
-	function __construct($sys = true, $processor = true, $memory = true, $net = true, $hd = true, $partitions = true, $rescue = false) {
+	function __construct($sys = true, $processor = true, $memory = true, $net = true, $hd = true, $partitions = true, $rescue = true) {
 		$this->system = $sys;
 		$this->cpu = $processor;
 		$this->ram = $memory;
@@ -58,17 +58,22 @@ class Objects {
 		if ($this->cpu == true) {
 			echo "<table>";
 			echo "<tr><td class='parameter' colspan='2'>CPU:</td></tr>";
+			echo "<tr><td>CPU INFO:</td><td>" . $this->parser["CPU"]["0"]["Model"] . "</td></tr>";
 			foreach ($this->parser["CPU"] as $key => $value) {
 				// echo $key . " " . $value;
 				echo "<tr>";
 				echo "<td>Core $key</td>";
 				echo "<td>";
 				foreach ($value as $key2 => $value2) {
+					if ($key2 == "MHz") {
+						echo $value2 . " MHz  -- ";
+					}
 					if ($key2 == "usage_percentage") {
 						echo "Usage Percentage" . " " . $value2 . " ";
-					} else {
-					echo $key2 . " " . $value2 . " ";
 					}
+					// } else {
+					// echo $key2 . " " . $value2 . " ";
+					// }
 				}
 				echo "</td>";
 				echo "</tr>";
@@ -170,12 +175,12 @@ class Objects {
 	}
 
 	function emergencyDisplay() {
-		if ($this->emergency == true) {
-			echo '<pre>' . var_export($parser["CPU"], true) . '</pre>';
-			echo '<pre>' . var_export($parser["RAM"], true) . '</pre>';
-			echo '<pre>' . var_export($parser["Network Devices"], true) . '</pre>';
-			echo '<pre>' . var_export($parser["HD"], true) . '</pre>';
-			echo '<pre>' . var_export($parser["Mounts"], true) . '</pre>';
+		if ($this->emergency) {
+			echo '<pre>' . var_export($this->parser["CPU"], true) . '</pre>';
+			echo '<pre>' . var_export($this->parser["RAM"], true) . '</pre>';
+			echo '<pre>' . var_export($this->parser["Network Devices"], true) . '</pre>';
+			echo '<pre>' . var_export($this->parser["HD"], true) . '</pre>';
+			echo '<pre>' . var_export($this->parser["Mounts"], true) . '</pre>';
 		}
 	}
 
