@@ -19,7 +19,9 @@
 	  <option value="B">B</option>
 	</select>
 </p>
-<label><input type="checkbox">Disable autorefresh</label>
+<label><input type="checkbox" class="refresh">Disable autorefresh</label>
+</br>
+<label><input type="checkbox" class="date">Disable showing date of warning</label>
 <?php
 
 require('./sqling.php');
@@ -31,6 +33,7 @@ $sqling = new Sqling;
 $sqling->connect();
 $sqling->getHighestCPUUsage();
 $sqling->generateCPUWarning();
+$sqling->generateRAMWarning();
 
 // Load libs
 // require_once dirname(__FILE__).'/init.php';

@@ -2,8 +2,8 @@ const resetButton = document.createElement("button")
 resetButton.textContent = "Refresh page"
 document.body.appendChild(resetButton)
 
-if(isMobileDevice()) {
-	document.querySelector("p").innerText="";
+if (isMobileDevice()) {
+	document.querySelector("p").innerText = "";
 }
 
 const refresh = () => {
@@ -33,25 +33,25 @@ allTr.forEach(element => {
 	element.addEventListener("mouseout", mouseout)
 });
 
-function loadJSON(callback) {   
-    var xobj = new XMLHttpRequest();
+function loadJSON(callback) {
+	var xobj = new XMLHttpRequest();
 	xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'config.json', false);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-        	// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-        	callback(xobj.responseText);
-        }
-    };
-    xobj.send(null);  
+	xobj.open('GET', 'config.json', false);
+	xobj.onreadystatechange = function () {
+		if (xobj.readyState == 4 && xobj.status == "200") {
+			// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+			callback(xobj.responseText);
+		}
+	};
+	xobj.send(null);
 }
 
 let configuration = "";
 
 function init() {
-	loadJSON(function(response) {
-	 // Parse JSON string into object
-	   configuration = JSON.parse(response);
+	loadJSON(function (response) {
+		// Parse JSON string into object
+		configuration = JSON.parse(response);
 	});
 }
 
@@ -66,27 +66,26 @@ const repleaceBytes = function () {
 		// console.log((parseInt(element.innerText) / ‭1073741824));‬
 		if (element.innerText == "") {
 			//does nothing
-		} else if(isMobileDevice()) {
-			element.innerText = ((element.dataset.bytes)/1024/1024/1024).toFixed(2) + " GiB";
-		} else {			
-			switch (document.querySelector("select").value)
-			{
+		} else if (isMobileDevice()) {
+			element.innerText = ((element.dataset.bytes) / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+		} else {
+			switch (document.querySelector("select").value) {
 				case "GiB":
-					element.innerText = ((element.dataset.bytes)/1024/1024/1024).toFixed(2) + " GiB";
-				break;
+					element.innerText = ((element.dataset.bytes) / 1024 / 1024 / 1024).toFixed(2) + " GiB";
+					break;
 				case "MiB":
-					element.innerText = ((element.dataset.bytes)/1024/1024).toFixed(2) + " MiB";
-				break;
+					element.innerText = ((element.dataset.bytes) / 1024 / 1024).toFixed(2) + " MiB";
+					break;
 				case "kiB":
-					element.innerText = ((element.dataset.bytes)/1024).toFixed(2) + " kiB";
-				break;
+					element.innerText = ((element.dataset.bytes) / 1024).toFixed(2) + " kiB";
+					break;
 				case "B":
 					element.innerText = element.dataset.bytes + " B";
-				break;
+					break;
 				default:
-				break;
+					break;
 			}
-//			element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GB";
+			//			element.innerText = Math.round(parseInt(element.innerText)/1024/1024/1024) + " GB";
 		}
 	});
 }
@@ -94,10 +93,10 @@ const repleaceBytes = function () {
 init();
 
 const setValueFromConfiguration = () => {
-	if(!isMobileDevice()) {
-		select.value=configuration.bytes;
-		select.id=configuration.bytes;
-	}	
+	if (!isMobileDevice()) {
+		select.value = configuration.bytes;
+		select.id = configuration.bytes;
+	}
 }
 // setTimeout(document.querySelector("select").value=configuration.bytes, 1000);
 // readConfig();
@@ -107,8 +106,8 @@ setValueFromConfiguration()
 repleaceBytes()
 
 function changedSelect() {
-	configuration.bytes=select.value;
-	select.id=select.value;
+	configuration.bytes = select.value;
+	select.id = select.value;
 	repleaceBytes();
 }
 
@@ -128,5 +127,23 @@ const switchRefreshement = () => {
 document.querySelector("input").addEventListener("click", switchRefreshement);
 
 function isMobileDevice() {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+	return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
+
+const ul = document.querySelectorAll("ul");
+let dateSwitch = true;
+const switchShowingDate = () => {
+	if (dateSwitch) {
+		ul.forEach(element => {
+			element.setAttribute("hidden", null);
+		});
+		dateSwitch = false;
+	} else {
+		ul.forEach(element => {
+			element.setAttribute("hidden");
+		});
+		dateSwitch = true;
+	}
+}
+
+document.querySelector(".date").addEventListener("click", switchShowingDate);
