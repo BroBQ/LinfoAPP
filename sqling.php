@@ -13,6 +13,8 @@ class Sqling {
 	private $sqlRAM = '';
 	private $netDevicesDataSQL = array();
 
+	private $sqlGetCPUUsage = '';
+
 	function connect() {
 		$this->databaseConnection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 		if ($this->databaseConnection->connect_error) {
@@ -58,9 +60,18 @@ class Sqling {
 	function closeConnection() {
 		$this->databaseConnection->close();
 	}
+
+	function getHighestCPUUsage() {
+		$this->getHighestCPUUsage = 'SELECT * FROM `cpuinfo` ORDER BY `UsagePercentage` DESC LIMIT 1';
+		$dataFromDatabase = $this->databaseConnection->query($this->getHighestCPUUsage);
+		if ($dataFromDatabase->num_rows > 0) {
+			// output data of each row
+			while($row = $dataFromDatabase->fetch_assoc()) {
+				echo "<p>Highest CPU Usage noticed at: " . $row["CPUDate"] . " with value " . $row["UsagePercentage"] . "%</p>";
+			}
+		} else {
+			echo "0 results";
+		}
+	}
 }
-
-
-
-
 ?>

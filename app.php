@@ -27,6 +27,10 @@ require('./objects.php');
 // emergency way to show info about devices
 $emergency = false;
 
+$sqling = new Sqling;
+$sqling->connect();
+$sqling->getHighestCPUUsage();
+
 // Load libs
 // require_once dirname(__FILE__).'/init.php';
 
@@ -67,8 +71,7 @@ echo "<br/>";
 // Table for Mounted Drives
 $objects->showMounted();
 
-$sqling = new Sqling;
-$sqling->connect();
+
 $sqling->createSQL($objects->getParser());
 $sqling->send();
 $sqling->closeConnection();
