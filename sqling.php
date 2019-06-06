@@ -111,5 +111,46 @@ class Sqling {
 			echo "</p>";
 		}
 	}
+
+	function generateRAMWarning() {
+		$JSON = file_get_contents("config.json");
+		$array = json_decode($JSON, true);
+		
+		$sqlRAMWarning = "SELECT * FROM `ram` WHERE Free / Total < " . $array["RAMwarning"] . "AND (RAMDate > DATE_SUB(NOW(), INTERVAL 1 DAY))";
+		$sqlRAMMax = "SELECT * FROM `ram` WHERE Free / Total < " . $array["RAMmax"] . "AND (RAMDate > DATE_SUB(NOW(), INTERVAL 1 DAY))";
+
+		$dataFromDatabase = $this->databaseConnection->query($sqlRAMWarning);
+		$dataFromDatabase2 = $this->databaseConnection->query($sqlRAMMax);
+
+		if ($dataFromDatabase->num_rows > 0) {
+			if ($dataFromDatabase->num_rows == 1) {
+				echo "<p><span class='red'>RAM warning value exceeded " . $dataFromDatabase->num_rows . " time!</span>";
+			} else {
+				echo "<p><span class='red'>RAM warning value exceeded " . $dataFromDatabase->num_rows . " times!</span>";
+			}
+
+			echo "<ul>";
+			while($row = $dataFromDatabase->fetch_assoc()) {
+				echo "<li>" . $row['RAMDate'] . "</li>";
+			}
+			echo "</ul>";
+			echo "</p>";
+		}
+
+		if ($dataFromDatabase2->num_rows > 0) {
+			if ($dataFromDatabase2->num_rows == 1) {
+				echo "<p><span class='pulsate'>RAM was overloaded " . $dataFromDatabase2->num_rows . " time!</span></p>";
+			} else {
+				echo "<p><span class='pulsate'>RAM was overloaded " . $dataFromDatabase2->num_rows . " times!</span></p>";
+			}
+			echo "<ul>";
+			while($row = $dataFromDatabase2->fetch_assoc()) {
+				echo "<li>" . $row['RAMDate'] . "</li>";
+			}
+			echo "</ul>";
+			echo "</p>";
+		}
+
+	}
 }
 ?>
